@@ -1,3 +1,6 @@
 [submodule "device-driver"]
 	path = device-driver
 	url = https://github.com/touchjet/SoterDeviceDriver.git
+[submodule "blockchain-service"]
+	path = blockchain-service
+	url = https://github.com/touchjet/BlockchainService.git
