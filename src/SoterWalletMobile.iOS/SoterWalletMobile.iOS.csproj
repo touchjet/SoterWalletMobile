@@ -134,5 +134,15 @@
       <Project>{6859B06C-E459-4E67-9627-BA6443855487}</Project>
       <Name>SoterWalletMobile</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\device-driver\xamarin-bluetooth-le\Source\Plugin.BLE.iOS\Plugin.BLE.iOS.csproj">
+      <Project>{00F27EFE-B8A3-4FD3-BC1F-1179FA7D91B9}</Project>
+      <Name>Plugin.BLE.iOS</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\LaunchScreenBackground%402x.png" />
+    <BundleResource Include="Resources\LaunchScreenBackground%403x.png" />
+    <BundleResource Include="Resources\SoterLogo%402x.png" />
+    <BundleResource Include="Resources\SoterLogo%403x.png" />
   </ItemGroup>
 </Project>

@@ -12,4 +12,13 @@
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="3.4.0.1009999" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Pages\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\device-driver\xamarin-bluetooth-le\Source\Plugin.BLE.Abstractions\Plugin.BLE.Abstractions.csproj" />
+    <ProjectReference Include="..\..\device-driver\xamarin-bluetooth-le\Source\Plugin.BLE\Plugin.BLE.csproj" />
+    <ProjectReference Include="..\..\device-driver\src\SoterDevice\SoterDevice.csproj" />
+    <ProjectReference Include="..\..\device-driver\src\SoterDevice.Ble\SoterDevice.Ble.csproj" />
+  </ItemGroup>
 </Project>

@@ -1,4 +1,7 @@
 ﻿using System;
+using Plugin.BLE;
+using Plugin.BLE.Abstractions.Contracts;
+using SoterWalletMobile.Pages;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -11,7 +14,14 @@ namespace SoterWalletMobile
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            if (CrossBluetoothLE.Current.State != BluetoothState.On)
+            {
+                MainPage = new EnableBlePage();
+            }
+            else
+            {
+                MainPage = new MainPage();
+            }
         }
 
         protected override void OnStart()
