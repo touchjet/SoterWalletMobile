@@ -14,7 +14,6 @@ namespace SoterWalletMobile
         public App()
         {
             InitializeComponent();
-
             if (String.IsNullOrEmpty(Settings.DeviceName))
             {
                 if (CrossBluetoothLE.Current.State == BluetoothState.On)
@@ -28,7 +27,7 @@ namespace SoterWalletMobile
             }
             else
             {
-                MainPage = new MainPage();
+                MainPage = new PairingPage();
             }
         }
 

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="SoterWalletMobile.Pages.PairingPage" xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms" xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" ios:Page.UseSafeArea="true" Style="{StaticResource darkPageStyle}">
+    <ContentPage.Content>
+        <Grid Style="{StaticResource gridStyle}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="124" />
+                <RowDefinition Height="325" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="40" />
+                <RowDefinition Height="88" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="325" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <skia:SKCanvasView x:Name="canvasView"
+                           Grid.Row="1" Grid.Column="1"
+                           PaintSurface="OnCanvasViewPaintSurface" />
+            <Image Source="Pairing" HeightRequest="101" WidthRequest="101" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="1" Grid.Column="1" />
+            <Label Text="Searching nearby Soter Wallet." Style="{StaticResource lightLabelStyle}" Grid.Row="3" Grid.Column="1" />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

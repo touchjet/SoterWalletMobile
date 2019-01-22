@@ -148,6 +148,9 @@
     <PackageReference Include="Xam.Plugins.Settings">
       <Version>3.1.1</Version>
     </PackageReference>
+    <PackageReference Include="SkiaSharp.Views.Forms">
+      <Version>1.68.0</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
@@ -171,5 +174,7 @@
     <BundleResource Include="Resources\SoterWire%403x.png" />
     <BundleResource Include="Resources\SoterWirePwr%402x.png" />
     <BundleResource Include="Resources\SoterWirePwr%403x.png" />
+    <BundleResource Include="Resources\Pairing%402x.png" />
+    <BundleResource Include="Resources\Pairing%403x.png" />
   </ItemGroup>
 </Project>
