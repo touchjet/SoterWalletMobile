@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 using Foundation;
+using Serilog;
 using UIKit;
 
 namespace SoterWalletMobile.iOS
@@ -22,6 +23,10 @@ namespace SoterWalletMobile.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+            Log.Logger = new LoggerConfiguration()
+                            .MinimumLevel.Debug()
+                            .WriteTo.NSLog()
+                            .CreateLogger();
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
 

@@ -20,13 +20,13 @@
 	<key>MinimumOSVersion</key>
 	<string>8.0</string>
 	<key>CFBundleDisplayName</key>
-	<string>SoterWalletMobile</string>
+	<string>Soter Wallet</string>
 	<key>CFBundleIdentifier</key>
 	<string>digbig.SoterWallet</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>CFBundleName</key>
-	<string>Soter Wallet</string>
+	<string>SoterWalletMobile</string>
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/AppIcon.appiconset</string>
 	<key>CFBundleShortVersionString</key>
