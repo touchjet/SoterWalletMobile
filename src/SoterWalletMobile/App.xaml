@@ -20,6 +20,18 @@
                 <Setter Property="BackgroundColor" Value="#416AFF" />
                 <Setter Property="TextColor" Value="#FFFFFF" />
             </Style>
+            <Style x:Key="grayTextButtonStyle" TargetType="Button">
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                <Setter Property="BackgroundColor" Value="Transparent" />
+                <Setter Property="TextColor" Value="#BEC1CC" />
+            </Style>
+            <Style x:Key="blueTextButtonStyle" TargetType="Button">
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                <Setter Property="BackgroundColor" Value="Transparent" />
+                <Setter Property="TextColor" Value="#416AFF" />
+            </Style>
             <Style x:Key="lightSmallLabelStyle" TargetType="Label">
                 <Setter Property="HorizontalOptions" Value="Center" />
                 <Setter Property="VerticalOptions" Value="Center" />

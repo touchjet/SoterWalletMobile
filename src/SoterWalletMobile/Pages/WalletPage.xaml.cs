@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using Serilog;
 using Xamarin.Forms;
 
 namespace SoterWalletMobile.Pages
@@ -20,6 +21,16 @@ namespace SoterWalletMobile.Pages
             tokens.Add(new TokenViewModel { Name = "Ethereum", Shortcut = "ETH", Icon = ImageSource.FromFile("ETH"), Balance = "0.00 ETH", BalanceFiat = "$ 0.00" });
             tokens.Add(new TokenViewModel { Name = "Bitcoin Cash", Shortcut = "BCH", Icon = ImageSource.FromFile("BCH"), Balance = "0.00 BCH", BalanceFiat = "$ 0.00" });
             tokens.Add(new TokenViewModel { Name = "D Cash", Shortcut = "DASH", Icon = ImageSource.FromFile("DASH"), Balance = "0.00 DASH", BalanceFiat = "$ 0.00" });
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+        }
+
+        async void Handle_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e)
+        {
+            await Navigation.PushModalAsync(new PinPage());
         }
     }
 
