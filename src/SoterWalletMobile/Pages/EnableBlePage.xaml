@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="SoterWalletMobile.Pages.EnableBlePage" xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" ios:Page.UseSafeArea="true" Style="{StaticResource darkPageStyle}">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:resx="clr-namespace:SoterWalletMobile;assembly=SoterWalletMobile" x:Class="SoterWalletMobile.Pages.EnableBlePage" xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" ios:Page.UseSafeArea="true" Style="{StaticResource darkPageStyle}">
     <ContentPage.Content>
         <Grid Style="{StaticResource gridStyle}">
             <Grid.RowDefinitions>
@@ -15,7 +15,7 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <Image Source="NoBle" Aspect="AspectFill" Grid.Row="1" Grid.Column="1" />
-            <Label Text="Please turn on Bluetooth first." Style="{StaticResource lightLabelStyle}" Grid.Row="3" Grid.Column="1" />
+            <Label Text="Please turn on Bluetooth first." Style="{StaticResource lightSmallLabelStyle}" Grid.Row="3" Grid.Column="1" />
         </Grid>
     </ContentPage.Content>
 </ContentPage>

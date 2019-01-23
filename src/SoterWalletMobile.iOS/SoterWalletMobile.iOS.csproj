@@ -184,5 +184,21 @@
     <BundleResource Include="Resources\Settings%403x.png" />
     <BundleResource Include="Resources\Wallet%402x.png" />
     <BundleResource Include="Resources\Wallet%403x.png" />
+    <BundleResource Include="Resources\SoterLogoSmall%402x.png" />
+    <BundleResource Include="Resources\SoterLogoSmall%403x.png" />
+    <BundleResource Include="Resources\BCH%402x.png" />
+    <BundleResource Include="Resources\BCH%403x.png" />
+    <BundleResource Include="Resources\BTC%402x.png" />
+    <BundleResource Include="Resources\BTC%403x.png" />
+    <BundleResource Include="Resources\DASH%402x.png" />
+    <BundleResource Include="Resources\DASH%403x.png" />
+    <BundleResource Include="Resources\DOGE%402x.png" />
+    <BundleResource Include="Resources\DOGE%403x.png" />
+    <BundleResource Include="Resources\ETH%402x.png" />
+    <BundleResource Include="Resources\ETH%403x.png" />
+    <BundleResource Include="Resources\LTC%402x.png" />
+    <BundleResource Include="Resources\LTC%403x.png" />
+    <BundleResource Include="Resources\Add%402x.png" />
+    <BundleResource Include="Resources\Add%403x.png" />
   </ItemGroup>
 </Project>

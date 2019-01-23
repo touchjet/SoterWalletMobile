@@ -20,17 +20,50 @@
                 <Setter Property="BackgroundColor" Value="#416AFF" />
                 <Setter Property="TextColor" Value="#FFFFFF" />
             </Style>
-            <Style x:Key="lightLabelStyle" TargetType="Label">
+            <Style x:Key="lightSmallLabelStyle" TargetType="Label">
                 <Setter Property="HorizontalOptions" Value="Center" />
                 <Setter Property="VerticalOptions" Value="Center" />
                 <Setter Property="TextColor" Value="#FFFFFF" />
                 <Setter Property="FontSize" Value="14" />
             </Style>
-            <Style x:Key="blueLabelStyle" TargetType="Label">
+            <Style x:Key="darkSmallLabelStyle" TargetType="Label">
                 <Setter Property="HorizontalOptions" Value="Center" />
                 <Setter Property="VerticalOptions" Value="Center" />
-                <Setter Property="TextColor" Value="#FFFFFF" />
+                <Setter Property="TextColor" Value="#28304D" />
                 <Setter Property="FontSize" Value="14" />
+            </Style>
+            <Style x:Key="graySmallLabelStyle" TargetType="Label">
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="TextColor" Value="#BEC1CC" />
+                <Setter Property="FontSize" Value="14" />
+            </Style>
+            <Style x:Key="blueSmallLabelStyle" TargetType="Label">
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="TextColor" Value="#416AFF" />
+                <Setter Property="FontSize" Value="14" />
+            </Style>
+            <Style x:Key="darkMediumLabelStyle" TargetType="Label">
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="TextColor" Value="#28304D" />
+                <Setter Property="FontSize" Value="18" />
+            </Style>
+            <Style x:Key="currencyLabelStyle" TargetType="Label">
+                <Setter Property="HorizontalOptions" Value="Start" />
+                <Setter Property="VerticalOptions" Value="End" />
+                <Setter Property="TextColor" Value="#28304D" />
+                <Setter Property="FontSize" Value="24" />
+            </Style>
+            <Style x:Key="balanceLabelStyle" TargetType="Label">
+                <Setter Property="HorizontalOptions" Value="Start" />
+                <Setter Property="VerticalOptions" Value="End" />
+                <Setter Property="TextColor" Value="#28304D" />
+                <Setter Property="FontSize" Value="42" />
+            </Style>
+            <Style x:Key="separatorBoxViewStyle" TargetType="BoxView">
+                <Setter Property="Color" Value="#DFE1EB" />
             </Style>
             <Style x:Key="bleCircleBoxViewStyle" TargetType="BoxView">
                 <Setter Property="Color" Value="#416AFF" />
