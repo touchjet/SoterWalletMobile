@@ -24,4 +24,18 @@
     <ProjectReference Include="..\..\device-driver\src\SoterDevice\SoterDevice.csproj" />
     <ProjectReference Include="..\..\device-driver\src\SoterDevice.Ble\SoterDevice.Ble.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Pages\ReceivePage.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="AppResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="AppResources.Designer.cs">
+      <DependentUpon>AppResources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
 </Project>

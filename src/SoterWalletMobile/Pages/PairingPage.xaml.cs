@@ -70,7 +70,7 @@ namespace SoterWalletMobile.Pages
                         drawStage = -1;
                     }
                     Settings.DeviceName = device.Name;
-                    Application.Current.MainPage = new MainPage();
+                    Application.Current.MainPage = new MainTabbedPage();
                     return;
                 }
                 catch (Exception ex)

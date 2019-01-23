@@ -27,7 +27,7 @@ namespace SoterWalletMobile
             }
             else
             {
-                MainPage = new PairingPage();
+                MainPage = new MainTabbedPage();
             }
         }
 

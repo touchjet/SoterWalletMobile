@@ -176,5 +176,13 @@
     <BundleResource Include="Resources\SoterWirePwr%403x.png" />
     <BundleResource Include="Resources\Pairing%402x.png" />
     <BundleResource Include="Resources\Pairing%403x.png" />
+    <BundleResource Include="Resources\Receive%402x.png" />
+    <BundleResource Include="Resources\Receive%403x.png" />
+    <BundleResource Include="Resources\Send%402x.png" />
+    <BundleResource Include="Resources\Send%403x.png" />
+    <BundleResource Include="Resources\Settings%402x.png" />
+    <BundleResource Include="Resources\Settings%403x.png" />
+    <BundleResource Include="Resources\Wallet%402x.png" />
+    <BundleResource Include="Resources\Wallet%403x.png" />
   </ItemGroup>
 </Project>
