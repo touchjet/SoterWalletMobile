@@ -1,6 +1,7 @@
 ﻿using System;
 using Plugin.BLE;
 using Plugin.BLE.Abstractions.Contracts;
+using SoterDevice.Ble;
 using SoterWalletMobile.Helpers;
 using SoterWalletMobile.Pages;
 using Xamarin.Forms;

@@ -30,7 +30,7 @@ namespace SoterWalletMobile.Pages
 
         async void Handle_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e)
         {
-            await Navigation.PushModalAsync(new PinPage());
+            await Navigation.PushAsync(new PinPage());
         }
     }
 
