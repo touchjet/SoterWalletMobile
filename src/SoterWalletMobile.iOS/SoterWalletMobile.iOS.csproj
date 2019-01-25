@@ -200,5 +200,7 @@
     <BundleResource Include="Resources\LTC%403x.png" />
     <BundleResource Include="Resources\Add%402x.png" />
     <BundleResource Include="Resources\Add%403x.png" />
+    <BundleResource Include="Resources\blueButton%402x.png" />
+    <BundleResource Include="Resources\blueButton%403x.png" />
   </ItemGroup>
 </Project>

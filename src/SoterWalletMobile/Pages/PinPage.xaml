@@ -31,15 +31,15 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <Button ClassId="7" Clicked="PIN_Clicked" BackgroundColor="#E4E6ED" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="34" HeightRequest="34" CornerRadius="17" Grid.Column="0" Grid.Row="0" />
-                <Button ClassId="8" Clicked="PIN_Clicked" BackgroundColor="#E4E6ED" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="34" HeightRequest="34" CornerRadius="17" Grid.Column="1" Grid.Row="0" />
-                <Button ClassId="9" Clicked="PIN_Clicked" BackgroundColor="#E4E6ED" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="34" HeightRequest="34" CornerRadius="17" Grid.Column="2" Grid.Row="0" />
-                <Button ClassId="4" Clicked="PIN_Clicked" BackgroundColor="#E4E6ED" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="34" HeightRequest="34" CornerRadius="17" Grid.Column="0" Grid.Row="1" />
-                <Button ClassId="5" Clicked="PIN_Clicked" BackgroundColor="#E4E6ED" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="34" HeightRequest="34" CornerRadius="17" Grid.Column="1" Grid.Row="1" />
-                <Button ClassId="6" Clicked="PIN_Clicked" BackgroundColor="#E4E6ED" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="34" HeightRequest="34" CornerRadius="17" Grid.Column="2" Grid.Row="1" />
-                <Button ClassId="1" Clicked="PIN_Clicked" BackgroundColor="#E4E6ED" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="34" HeightRequest="34" CornerRadius="17" Grid.Column="0" Grid.Row="2" />
-                <Button ClassId="2" Clicked="PIN_Clicked" BackgroundColor="#E4E6ED" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="34" HeightRequest="34" CornerRadius="17" Grid.Column="1" Grid.Row="2" />
-                <Button ClassId="3" Clicked="PIN_Clicked" BackgroundColor="#E4E6ED" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="34" HeightRequest="34" CornerRadius="17" Grid.Column="2" Grid.Row="2" />
+                <Button ClassId="7" Clicked="PIN_Clicked" Image="blueButton" VerticalOptions="Center" WidthRequest="44" HeightRequest="44" Grid.Column="0" Grid.Row="0" />
+                <Button ClassId="8" Clicked="PIN_Clicked" Image="blueButton" VerticalOptions="Center" WidthRequest="44" HeightRequest="44" Grid.Column="1" Grid.Row="0" />
+                <Button ClassId="9" Clicked="PIN_Clicked" Image="blueButton" VerticalOptions="Center" WidthRequest="44" HeightRequest="44" Grid.Column="2" Grid.Row="0" />
+                <Button ClassId="4" Clicked="PIN_Clicked" Image="blueButton" VerticalOptions="Center" WidthRequest="44" HeightRequest="44" Grid.Column="0" Grid.Row="1" />
+                <Button ClassId="5" Clicked="PIN_Clicked" Image="blueButton" VerticalOptions="Center" WidthRequest="44" HeightRequest="44" Grid.Column="1" Grid.Row="1" />
+                <Button ClassId="6" Clicked="PIN_Clicked" Image="blueButton" VerticalOptions="Center" WidthRequest="44" HeightRequest="44" Grid.Column="2" Grid.Row="1" />
+                <Button ClassId="1" Clicked="PIN_Clicked" Image="blueButton" VerticalOptions="Center" WidthRequest="44" HeightRequest="44" Grid.Column="0" Grid.Row="2" />
+                <Button ClassId="2" Clicked="PIN_Clicked" Image="blueButton" VerticalOptions="Center" WidthRequest="44" HeightRequest="44" Grid.Column="1" Grid.Row="2" />
+                <Button ClassId="3" Clicked="PIN_Clicked" Image="blueButton" VerticalOptions="Center" WidthRequest="44" HeightRequest="44" Grid.Column="2" Grid.Row="2" />
             </Grid>
             <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Grid.Row="7" Grid.Column="1">
                 <Button x:Name="cancelButton" Clicked="Cancel_Clicked" Text="CANCEL" Style="{StaticResource grayTextButtonStyle}" HorizontalOptions="Center" />
