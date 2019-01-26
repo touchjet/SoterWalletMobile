@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Plugin.Permissions;
+using Plugin.Permissions.Abstractions;
 using Serilog;
 using SkiaSharp;
 using SkiaSharp.Views.Forms;
@@ -44,6 +46,27 @@ namespace SoterWalletMobile.Pages
                 return true; // True = Repeat again, False = Stop the timer
             });
 
+            if (Device.RuntimePlatform == Device.Android)
+            {
+                var status = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Location);
+                if (status != PermissionStatus.Granted)
+                {
+                    if (await CrossPermissions.Current.ShouldShowRequestPermissionRationaleAsync(Permission.Location))
+                    {
+                        await DisplayAlert("Need Location Permission", "Soter Wallet needs Location Permission in order to search for the device.", "OK");
+                    }
+
+                    var results = await CrossPermissions.Current.RequestPermissionsAsync(Permission.Location);
+                    //Best practice to always check that the key exists
+                    if (results.ContainsKey(Permission.Location))
+                        status = results[Permission.Location];
+                }
+                if (status != PermissionStatus.Granted)
+                {
+                    await DisplayAlert("Location Permission Denied", "Can not continue, try again.", "OK");
+                }
+            }
+
             ISoterDevice device = null;
             await SoterDeviceFactoryBle.Instance.StartDeviceSearchAsync();
             await Task.Delay(500);
@@ -54,7 +77,7 @@ namespace SoterWalletMobile.Pages
             }
             else if (SoterDeviceFactoryBle.Instance.Devices.Count == 1)
             {
-                device = SoterDeviceFactoryBle.Instance.Devices.FirstOrDefault();
+                device = SoterDeviceFactoryBle.Instance.Devices.First();
             }
             else
             {
@@ -70,24 +93,33 @@ namespace SoterWalletMobile.Pages
                     {
                         drawStage = -1;
                     }
-                    using (var db = new DatabaseContext())
+                    if (device.Features.Initialized)
                     {
-                        db.Database.EnsureCreated();
-                        db.Transactions.Clear();
-                        db.Addresses.Clear();
-                        db.Coins.Clear();
-                        foreach (var coinType in await device.GetCoinTableAsync(72))
+                        using (var db = new DatabaseContext())
                         {
-                            if (Settings.SupportedCoins.Any(c => c.Equals(coinType.CoinShortcut)))
+                            db.Database.EnsureCreated();
+                            db.Transactions.Clear();
+                            db.Addresses.Clear();
+                            db.Coins.Clear();
+                            foreach (var coinType in await device.GetCoinTableAsync(72))
                             {
-                                db.Coins.Add(new Models.Coin(coinType));
+                                if (Settings.SupportedCoins.Any(c => c.Equals(coinType.CoinShortcut)))
+                                {
+                                    db.Coins.Add(new Models.Coin(coinType));
+                                }
                             }
+                            db.SaveChanges();
                         }
-                        db.SaveChanges();
+                        Settings.DeviceName = device.Name;
+                        device.Disconnect();
+                        Application.Current.MainPage = new NavigationPage(new MainTabbedPage());
+                        return;
                     }
-                    Settings.DeviceName = device.Name;
-                    Application.Current.MainPage = new NavigationPage(new MainTabbedPage());
-                    return;
+                    else
+                    {
+                        Application.Current.MainPage = new NavigationPage(new DeviceLabelPage());
+                        return;
+                    }
                 }
                 catch (Exception ex)
                 {

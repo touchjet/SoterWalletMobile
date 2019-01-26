@@ -27,5 +27,18 @@ namespace SoterWalletMobile.Helpers
             }
         }
 
+        private const string DeviceIdKey = "device_id";
+        public static string DeviceId
+        {
+            get
+            {
+                return AppSettings.GetValueOrDefault(DeviceIdKey, string.Empty);
+            }
+            set
+            {
+                AppSettings.AddOrUpdateValue(DeviceIdKey, value);
+            }
+        }
+
     }
 }

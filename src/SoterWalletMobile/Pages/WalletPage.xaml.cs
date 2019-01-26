@@ -30,6 +30,7 @@ namespace SoterWalletMobile.Pages
 
             using (var db = new DatabaseContext())
             {
+                db.Database.EnsureCreated();
                 foreach (var coin in db.Coins)
                 {
                     tokens.Add(new TokenViewModel { Name = coin.CoinName, Shortcut = coin.CoinShortcut, Icon = ImageSource.FromFile(coin.CoinShortcut), Balance = coin.BalanceString, BalanceFiat = "$ 0.00" });
