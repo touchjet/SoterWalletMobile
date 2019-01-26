@@ -39,7 +39,7 @@ namespace SoterWalletMobile.Pages
 
         async void Confirm_Clicked(object sender, System.EventArgs e)
         {
-            await Navigation.PopModalAsync();
+            await Navigation.PopAsync();
         }
 
         void OnCanvasViewPaintSurface(object sender, SKPaintSurfaceEventArgs args)

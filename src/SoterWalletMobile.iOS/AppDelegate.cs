@@ -27,6 +27,7 @@ namespace SoterWalletMobile.iOS
                             .MinimumLevel.Debug()
                             .WriteTo.NSLog()
                             .CreateLogger();
+            SQLitePCL.Batteries_V2.Init();
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
 

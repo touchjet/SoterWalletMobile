@@ -7,6 +7,7 @@ using SkiaSharp;
 using SkiaSharp.Views.Forms;
 using SoterDevice;
 using SoterDevice.Ble;
+using SoterWalletMobile.Data;
 using SoterWalletMobile.Helpers;
 using Xamarin.Forms;
 
@@ -45,7 +46,7 @@ namespace SoterWalletMobile.Pages
 
             ISoterDevice device = null;
             await SoterDeviceFactoryBle.Instance.StartDeviceSearchAsync();
-            await Task.Delay(3000);
+            await Task.Delay(500);
             await SoterDeviceFactoryBle.Instance.StopDeviceSearchAsync();
             if (SoterDeviceFactoryBle.Instance.Devices.Count == 0)
             {
@@ -70,7 +71,21 @@ namespace SoterWalletMobile.Pages
                         drawStage = -1;
                     }
                     Settings.DeviceName = device.Name;
-                    Application.Current.MainPage = new MainTabbedPage();
+                    await device.InitializeAsync();
+                    using (var db = new DatabaseContext())
+                    {
+                        db.Database.EnsureCreated();
+                        foreach (var coinType in await device.GetCoinTableAsync())
+                        {
+                            if (Settings.SupportedCoins.Any(c => c.Equals(coinType.CoinShortcut)))
+                            {
+                                db.Coins.Add(new Models.Coin(coinType));
+                            }
+                        }
+                        db.SaveChanges();
+                    }
+
+                    Application.Current.MainPage = new NavigationPage(new MainTabbedPage());
                     return;
                 }
                 catch (Exception ex)

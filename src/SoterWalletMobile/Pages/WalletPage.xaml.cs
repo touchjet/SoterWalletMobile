@@ -1,7 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using Microsoft.EntityFrameworkCore;
 using Serilog;
+using SoterDevice.Ble;
+using SoterWalletMobile.Data;
+using SoterWalletMobile.Helpers;
 using Xamarin.Forms;
 
 namespace SoterWalletMobile.Pages
@@ -15,19 +20,22 @@ namespace SoterWalletMobile.Pages
             InitializeComponent();
 
             summaryListView.ItemsSource = tokens;
-
-            tokens.Add(new TokenViewModel { Name = "Bitcoin", Shortcut = "BTC", Icon = ImageSource.FromFile("BTC"),Balance = "0.00 BTC", BalanceFiat = "$ 0.00" });
-            tokens.Add(new TokenViewModel { Name = "Litecoin", Shortcut = "LTC", Icon = ImageSource.FromFile("LTC"), Balance = "0.00 LTC", BalanceFiat = "$ 0.00" });
-            tokens.Add(new TokenViewModel { Name = "Ethereum", Shortcut = "ETH", Icon = ImageSource.FromFile("ETH"), Balance = "0.00 ETH", BalanceFiat = "$ 0.00" });
-            tokens.Add(new TokenViewModel { Name = "Bitcoin Cash", Shortcut = "BCH", Icon = ImageSource.FromFile("BCH"), Balance = "0.00 BCH", BalanceFiat = "$ 0.00" });
-            tokens.Add(new TokenViewModel { Name = "D Cash", Shortcut = "DASH", Icon = ImageSource.FromFile("DASH"), Balance = "0.00 DASH", BalanceFiat = "$ 0.00" });
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
-        }
 
+            labelDeviceName.Text = Settings.DeviceName;
+
+            using (var db = new DatabaseContext())
+            {
+                foreach (var coin in db.Coins)
+                {
+                    tokens.Add(new TokenViewModel { Name = coin.CoinName, Shortcut = coin.CoinShortcut, Icon = ImageSource.FromFile(coin.CoinShortcut), Balance = coin.BalanceString, BalanceFiat = "$ 0.00" });
+                }
+            }
+        }
         async void Handle_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e)
         {
             await Navigation.PushAsync(new PinPage());

@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugin.BLE.iOS", "..\device
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoterDevice.Ble", "..\device-driver\src\SoterDevice.Ble\SoterDevice.Ble.csproj", "{DDC1B7F1-7DD6-4E04-8753-BFAB3BFEFEAC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoterWalletMobile.DbConfig", "SoterWalletMobile.DbConfig\SoterWalletMobile.DbConfig.csproj", "{BA3E965A-CE91-4A30-B31F-8F475240EF39}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -177,6 +179,22 @@ Global
 		{DDC1B7F1-7DD6-4E04-8753-BFAB3BFEFEAC}.Ad-Hoc|iPhone.Build.0 = Release|Any CPU
 		{DDC1B7F1-7DD6-4E04-8753-BFAB3BFEFEAC}.AppStore|iPhone.ActiveCfg = Release|Any CPU
 		{DDC1B7F1-7DD6-4E04-8753-BFAB3BFEFEAC}.AppStore|iPhone.Build.0 = Release|Any CPU
+		{BA3E965A-CE91-4A30-B31F-8F475240EF39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA3E965A-CE91-4A30-B31F-8F475240EF39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA3E965A-CE91-4A30-B31F-8F475240EF39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA3E965A-CE91-4A30-B31F-8F475240EF39}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA3E965A-CE91-4A30-B31F-8F475240EF39}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{BA3E965A-CE91-4A30-B31F-8F475240EF39}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{BA3E965A-CE91-4A30-B31F-8F475240EF39}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{BA3E965A-CE91-4A30-B31F-8F475240EF39}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{BA3E965A-CE91-4A30-B31F-8F475240EF39}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{BA3E965A-CE91-4A30-B31F-8F475240EF39}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{BA3E965A-CE91-4A30-B31F-8F475240EF39}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{BA3E965A-CE91-4A30-B31F-8F475240EF39}.Release|iPhone.Build.0 = Release|Any CPU
+		{BA3E965A-CE91-4A30-B31F-8F475240EF39}.Ad-Hoc|iPhone.ActiveCfg = Release|Any CPU
+		{BA3E965A-CE91-4A30-B31F-8F475240EF39}.Ad-Hoc|iPhone.Build.0 = Release|Any CPU
+		{BA3E965A-CE91-4A30-B31F-8F475240EF39}.AppStore|iPhone.ActiveCfg = Release|Any CPU
+		{BA3E965A-CE91-4A30-B31F-8F475240EF39}.AppStore|iPhone.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{473027C2-63CC-4D98-8830-FB5A09F8E0CE} = {B2D700C2-5858-47EA-B8C8-088160E33C16}
