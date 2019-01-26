@@ -4,7 +4,7 @@ namespace SoterWalletMobile.Helpers
 {
     public static class Settings
     {
-        public static readonly string[] SupportedCoins = { "BTC", "DODGE", "ETH", "LTC", "BCH" };
+        public static readonly string[] SupportedCoins = { "BTC", "TEST", "DODGE", "ETH", "LTC", "BCH" };
 
         private static ISettings AppSettings
         {

@@ -70,12 +70,13 @@ namespace SoterWalletMobile.Pages
                     {
                         drawStage = -1;
                     }
-                    Settings.DeviceName = device.Name;
-                    await device.InitializeAsync();
                     using (var db = new DatabaseContext())
                     {
                         db.Database.EnsureCreated();
-                        foreach (var coinType in await device.GetCoinTableAsync())
+                        db.Transactions.Clear();
+                        db.Addresses.Clear();
+                        db.Coins.Clear();
+                        foreach (var coinType in await device.GetCoinTableAsync(72))
                         {
                             if (Settings.SupportedCoins.Any(c => c.Equals(coinType.CoinShortcut)))
                             {
@@ -84,7 +85,7 @@ namespace SoterWalletMobile.Pages
                         }
                         db.SaveChanges();
                     }
-
+                    Settings.DeviceName = device.Name;
                     Application.Current.MainPage = new NavigationPage(new MainTabbedPage());
                     return;
                 }
