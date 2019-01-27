@@ -1,24 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:resx="clr-namespace:SoterWalletMobile;assembly=SoterWalletMobile" x:Class="SoterWalletMobile.Pages.DeviceLabelPage"  xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" ios:Page.UseSafeArea="true" Style="{StaticResource lightPageStyle}">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:resx="clr-namespace:SoterWalletMobile;assembly=SoterWalletMobile" xmlns:controls="clr-namespace:SoterWalletMobile.Controls;assembly=SoterWalletMobile" x:Class="SoterWalletMobile.Pages.DeviceLabelPage"  xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" ios:Page.UseSafeArea="true" Style="{StaticResource lightPageStyle}">
     <ContentPage.Content>
-        <Grid Margin="60,23,60,150" Style="{StaticResource gridStyle}">
+        <Grid Margin="30,23,30,75" VerticalOptions="FillAndExpand" Style="{StaticResource gridStyle}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="25" />
                 <RowDefinition Height="40" />
                 <RowDefinition Height="45" />
                 <RowDefinition Height="30" />
-                <RowDefinition Height="14" />
-                <RowDefinition Height="14" />
-                <RowDefinition Height="25" />
-                <RowDefinition Height="14" />
                 <RowDefinition Height="20" />
+                <RowDefinition Height="1" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="44" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <Label Text="Device Label Setup" Style="{StaticResource darkMediumLabelStyle}" Grid.Row="0" Grid.Column="0"/>
+            <Label Text="Device Label" Style="{StaticResource darkMediumLabelStyle}" Grid.Row="0" Grid.Column="0"/>
+            <Label Text="You can setup a label for this device, it may help you managing multiple Soter Wallet devices." HorizontalOptions="Start" Style="{StaticResource darkSmallLabelStyle}" Grid.Row="2" Grid.Column="0"/>
+            <controls:BorderlessEntry x:Name="deviceLabelEntry" Placeholder="Your Wallet Label" TextChanged="Handle_TextChanged" HeightRequest="20" Grid.Row="4" Grid.Column="0" />
+            <BoxView Color="{StaticResource grayColor}" HeightRequest="1" HorizontalOptions="FillAndExpand" Grid.Row="5" Grid.Column="0" />
+            <Button x:Name="okButton" Text="OK" Clicked="Handle_Clicked" Style="{StaticResource disabledButtonStyle}" Grid.Row="7" Grid.Column="0"/>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

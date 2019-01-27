@@ -2,83 +2,98 @@
 <Application xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="SoterWalletMobile.App">
     <Application.Resources>
         <ResourceDictionary>
+            <Color x:Key="lightColor">#FFFFFF</Color>
+            <Color x:Key="grayColor">#D9DADE</Color>
+            <Color x:Key="blueColor">#416AFF</Color>
+            <Color x:Key="darkColor">#28304D</Color>
+            
             <Style x:Key="darkPageStyle" TargetType="ContentPage" ApplyToDerivedTypes="True">
-                <Setter Property="BackgroundColor" Value="#28304D" />
+                <Setter Property="BackgroundColor" Value="{StaticResource darkColor}" />
             </Style>
             <Style x:Key="lightPageStyle" TargetType="ContentPage" ApplyToDerivedTypes="True">
-                <Setter Property="BackgroundColor" Value="#FFFFFF" />
+                <Setter Property="BackgroundColor" Value="{StaticResource lightColor}" />
             </Style>
+            
             <Style x:Key="gridStyle" TargetType="Grid">
                 <Setter Property="Padding" Value="0" />
                 <Setter Property="Margin" Value="0" />
                 <Setter Property="RowSpacing" Value="0" />
                 <Setter Property="ColumnSpacing" Value="0" />
             </Style>
-            <Style x:Key="buttonStyle" TargetType="Button">
+            
+            <Style x:Key="normalButtonStyle" TargetType="Button">
                 <Setter Property="HorizontalOptions" Value="FillAndExpand" />
                 <Setter Property="VerticalOptions" Value="CenterAndExpand" />
-                <Setter Property="BackgroundColor" Value="#416AFF" />
-                <Setter Property="TextColor" Value="#FFFFFF" />
+                <Setter Property="BackgroundColor" Value="{StaticResource blueColor}" />
+                <Setter Property="TextColor" Value="{StaticResource lightColor}" />
+            </Style>
+            <Style x:Key="disabledButtonStyle" TargetType="Button">
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                <Setter Property="BackgroundColor" Value="{StaticResource grayColor}" />
+                <Setter Property="TextColor" Value="{StaticResource lightColor}" />
             </Style>
             <Style x:Key="grayTextButtonStyle" TargetType="Button">
                 <Setter Property="HorizontalOptions" Value="FillAndExpand" />
                 <Setter Property="VerticalOptions" Value="CenterAndExpand" />
                 <Setter Property="BackgroundColor" Value="Transparent" />
-                <Setter Property="TextColor" Value="#BEC1CC" />
+                <Setter Property="TextColor" Value="{StaticResource grayColor}" />
             </Style>
             <Style x:Key="blueTextButtonStyle" TargetType="Button">
                 <Setter Property="HorizontalOptions" Value="FillAndExpand" />
                 <Setter Property="VerticalOptions" Value="CenterAndExpand" />
                 <Setter Property="BackgroundColor" Value="Transparent" />
-                <Setter Property="TextColor" Value="#416AFF" />
+                <Setter Property="TextColor" Value="{StaticResource blueColor}" />
             </Style>
+            
             <Style x:Key="lightSmallLabelStyle" TargetType="Label">
                 <Setter Property="HorizontalOptions" Value="Center" />
                 <Setter Property="VerticalOptions" Value="Center" />
-                <Setter Property="TextColor" Value="#FFFFFF" />
+                <Setter Property="TextColor" Value="{StaticResource lightColor}" />
                 <Setter Property="FontSize" Value="14" />
             </Style>
             <Style x:Key="darkSmallLabelStyle" TargetType="Label">
                 <Setter Property="HorizontalOptions" Value="Center" />
                 <Setter Property="VerticalOptions" Value="Center" />
-                <Setter Property="TextColor" Value="#28304D" />
+                <Setter Property="TextColor" Value="{StaticResource darkColor}" />
                 <Setter Property="FontSize" Value="14" />
             </Style>
             <Style x:Key="graySmallLabelStyle" TargetType="Label">
                 <Setter Property="HorizontalOptions" Value="Center" />
                 <Setter Property="VerticalOptions" Value="Center" />
-                <Setter Property="TextColor" Value="#BEC1CC" />
+                <Setter Property="TextColor" Value="{StaticResource grayColor}" />
                 <Setter Property="FontSize" Value="14" />
             </Style>
             <Style x:Key="blueSmallLabelStyle" TargetType="Label">
                 <Setter Property="HorizontalOptions" Value="Center" />
                 <Setter Property="VerticalOptions" Value="Center" />
-                <Setter Property="TextColor" Value="#416AFF" />
+                <Setter Property="TextColor" Value="{StaticResource blueColor}" />
                 <Setter Property="FontSize" Value="14" />
             </Style>
             <Style x:Key="darkMediumLabelStyle" TargetType="Label">
                 <Setter Property="HorizontalOptions" Value="Center" />
                 <Setter Property="VerticalOptions" Value="Center" />
-                <Setter Property="TextColor" Value="#28304D" />
+                <Setter Property="TextColor" Value="{StaticResource darkColor}" />
                 <Setter Property="FontSize" Value="18" />
             </Style>
             <Style x:Key="currencyLabelStyle" TargetType="Label">
                 <Setter Property="HorizontalOptions" Value="Start" />
                 <Setter Property="VerticalOptions" Value="End" />
-                <Setter Property="TextColor" Value="#28304D" />
+                <Setter Property="TextColor" Value="{StaticResource darkColor}" />
                 <Setter Property="FontSize" Value="24" />
             </Style>
             <Style x:Key="balanceLabelStyle" TargetType="Label">
                 <Setter Property="HorizontalOptions" Value="Start" />
                 <Setter Property="VerticalOptions" Value="End" />
-                <Setter Property="TextColor" Value="#28304D" />
+                <Setter Property="TextColor" Value="{StaticResource darkColor}" />
                 <Setter Property="FontSize" Value="42" />
             </Style>
+            
             <Style x:Key="separatorBoxViewStyle" TargetType="BoxView">
                 <Setter Property="Color" Value="#DFE1EB" />
             </Style>
             <Style x:Key="bleCircleBoxViewStyle" TargetType="BoxView">
-                <Setter Property="Color" Value="#416AFF" />
+                <Setter Property="Color" Value="{StaticResource blueColor}" />
             </Style>
         </ResourceDictionary>
     </Application.Resources>

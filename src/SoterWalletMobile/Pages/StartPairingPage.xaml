@@ -18,7 +18,7 @@
             </Grid.ColumnDefinitions>
             <Image Source="SoterWirePwr" Aspect="AspectFill" Grid.Row="1" Grid.Column="1" />
             <Label Text="Press and hold the power button to turn on Soter Wallet." Style="{StaticResource blueSmallLabelStyle}" Grid.Row="3" Grid.Column="1" />
-            <Button Text="Start Pairing" Clicked="ButtonStarPairing_Clicked" Style="{StaticResource buttonStyle}" Grid.Row="5" Grid.Column="1" />
+            <Button Text="Start Pairing" Clicked="ButtonStarPairing_Clicked" Style="{StaticResource normalButtonStyle}" Grid.Row="5" Grid.Column="1" />
         </Grid>
     </ContentPage.Content>
 </ContentPage>

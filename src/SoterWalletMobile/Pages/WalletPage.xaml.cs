@@ -19,13 +19,6 @@ namespace SoterWalletMobile.Pages
         {
             InitializeComponent();
 
-            summaryListView.ItemsSource = tokens;
-        }
-
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-
             labelDeviceName.Text = Settings.DeviceName;
 
             using (var db = new DatabaseContext())
@@ -36,7 +29,14 @@ namespace SoterWalletMobile.Pages
                     tokens.Add(new TokenViewModel { Name = coin.CoinName, Shortcut = coin.CoinShortcut, Icon = ImageSource.FromFile(coin.CoinShortcut), Balance = coin.BalanceString, BalanceFiat = "$ 0.00" });
                 }
             }
+            summaryListView.ItemsSource = tokens;
         }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+        }
+
         async void Handle_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e)
         {
             await Navigation.PushAsync(new PinPage());

@@ -5,7 +5,7 @@
             <TableRoot>
                 <TableSection Title="Reset Connection">
                     <ViewCell>
-                        <Button Text="Forget Device" Clicked="Handle_Clicked" Style="{StaticResource buttonStyle}" />
+                        <Button Text="Forget Device" Clicked="Handle_Clicked" Style="{StaticResource normalButtonStyle}" />
                     </ViewCell>
                 </TableSection>
             </TableRoot>

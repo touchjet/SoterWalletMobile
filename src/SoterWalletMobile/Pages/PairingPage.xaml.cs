@@ -69,8 +69,11 @@ namespace SoterWalletMobile.Pages
 
             ISoterDevice device = null;
             await SoterDeviceFactoryBle.Instance.StartDeviceSearchAsync();
+            Log.Information("Wait for search results");
             await Task.Delay(500);
+            Log.Information("Wait finished");
             await SoterDeviceFactoryBle.Instance.StopDeviceSearchAsync();
+            Log.Information("Search stopped");
             if (SoterDeviceFactoryBle.Instance.Devices.Count == 0)
             {
                 await DisplayAlert("Error", "Can't find any Soter Wallet device!", "OK");
@@ -88,6 +91,7 @@ namespace SoterWalletMobile.Pages
             {
                 try
                 {
+                    await SoterDeviceFactoryBle.Instance.ConnectByIdAsync(device.Id);
                     await device.InitializeAsync();
                     lock (drawStageLock)
                     {
@@ -95,22 +99,9 @@ namespace SoterWalletMobile.Pages
                     }
                     if (device.Features.Initialized)
                     {
-                        using (var db = new DatabaseContext())
-                        {
-                            db.Database.EnsureCreated();
-                            db.Transactions.Clear();
-                            db.Addresses.Clear();
-                            db.Coins.Clear();
-                            foreach (var coinType in await device.GetCoinTableAsync(72))
-                            {
-                                if (Settings.SupportedCoins.Any(c => c.Equals(coinType.CoinShortcut)))
-                                {
-                                    db.Coins.Add(new Models.Coin(coinType));
-                                }
-                            }
-                            db.SaveChanges();
-                        }
+                        await Repository.LoadCoinTableFromDevice(device);
                         Settings.DeviceName = device.Name;
+                        Settings.DeviceId = device.Id;
                         device.Disconnect();
                         Application.Current.MainPage = new NavigationPage(new MainTabbedPage());
                         return;

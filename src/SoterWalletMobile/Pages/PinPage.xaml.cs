@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using Serilog;
 using SkiaSharp;
 using SkiaSharp.Views.Forms;
@@ -10,7 +8,7 @@ namespace SoterWalletMobile.Pages
 {
     public partial class PinPage : ContentPage
     {
-        public static string PIN = "";
+        public static string PIN = String.Empty;
 
         public PinPage()
         {
@@ -20,7 +18,7 @@ namespace SoterWalletMobile.Pages
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            PIN = "";
+            PIN = String.Empty;
         }
 
         void PIN_Clicked(object sender, System.EventArgs e)
@@ -33,7 +31,7 @@ namespace SoterWalletMobile.Pages
 
         void Cancel_Clicked(object sender, System.EventArgs e)
         {
-            PIN = "";
+            PIN = String.Empty;
             canvasView.InvalidateSurface();
         }
 
