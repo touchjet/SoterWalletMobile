@@ -1,19 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using Microsoft.EntityFrameworkCore;
-using Serilog;
-using SoterDevice.Ble;
+﻿using System.Collections.ObjectModel;
 using SoterWalletMobile.Data;
 using SoterWalletMobile.Helpers;
+using SoterWalletMobile.ViewModels;
 using Xamarin.Forms;
 
 namespace SoterWalletMobile.Pages
 {
     public partial class WalletPage : ContentPage
     {
-        ObservableCollection<TokenViewModel> tokens = new ObservableCollection<TokenViewModel>();
+        ObservableCollection<WalletViewModel> walletViewModels;
 
         public WalletPage()
         {
@@ -21,15 +16,8 @@ namespace SoterWalletMobile.Pages
 
             labelDeviceName.Text = Settings.DeviceName;
 
-            using (var db = new DatabaseContext())
-            {
-                db.Database.EnsureCreated();
-                foreach (var coin in db.Coins)
-                {
-                    tokens.Add(new TokenViewModel { Name = coin.CoinName, Shortcut = coin.CoinShortcut, Icon = ImageSource.FromFile(coin.CoinShortcut), Balance = coin.BalanceString, BalanceFiat = "$ 0.00" });
-                }
-            }
-            summaryListView.ItemsSource = tokens;
+            walletViewModels = Repository.GetWalletViewModels();
+            summaryListView.ItemsSource = walletViewModels;
         }
 
         protected override void OnAppearing()
@@ -41,14 +29,5 @@ namespace SoterWalletMobile.Pages
         {
             await Navigation.PushAsync(new PinPage());
         }
-    }
-
-    public class TokenViewModel
-    {
-        public string Name { get; set; }
-        public string Shortcut { get; set; }
-        public string Balance { get; set; }
-        public string BalanceFiat { get; set; }
-        public ImageSource Icon { get; set; }
     }
 }

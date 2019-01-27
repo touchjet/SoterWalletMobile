@@ -99,7 +99,7 @@ namespace SoterWalletMobile.Pages
                     }
                     if (device.Features.Initialized)
                     {
-                        await Repository.LoadCoinTableFromDevice(device);
+                        await Repository.LoadCoinTableFromDeviceAsync(device);
                         Settings.DeviceName = device.Name;
                         Settings.DeviceId = device.Id;
                         device.Disconnect();

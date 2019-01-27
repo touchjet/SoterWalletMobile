@@ -4,7 +4,7 @@ namespace SoterWalletMobile.Helpers
 {
     public static class Settings
     {
-        public static readonly string[] SupportedCoins = { "BTC", "TEST", "DODGE", "ETH", "LTC", "BCH" };
+        public static readonly string[] SupportedCoins = { "BTC", "TEST", "DODGE", "LTC" };
 
         private static ISettings AppSettings
         {
@@ -37,6 +37,19 @@ namespace SoterWalletMobile.Helpers
             set
             {
                 AppSettings.AddOrUpdateValue(DeviceIdKey, value);
+            }
+        }
+
+        private const string DeviceUuidKey = "device_uuid";
+        public static string DeviceUuid
+        {
+            get
+            {
+                return AppSettings.GetValueOrDefault(DeviceUuidKey, string.Empty);
+            }
+            set
+            {
+                AppSettings.AddOrUpdateValue(DeviceUuidKey, value);
             }
         }
 

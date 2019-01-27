@@ -41,7 +41,7 @@ namespace SoterWalletMobile.Pages
             device.EnterPinCallback += SoterDeviceEnterPinCallback; 
             await SoterDeviceFactoryBle.Instance.CurrentDevice.ResetDeviceAsync(deviceLabelEntry.Text);
             device.EnterPinCallback -= SoterDeviceEnterPinCallback;
-            await Repository.LoadCoinTableFromDevice(device);
+            await Repository.LoadCoinTableFromDeviceAsync(device);
             device.Disconnect();
             Settings.DeviceId = device.Id;
             Settings.DeviceName = device.Name;
