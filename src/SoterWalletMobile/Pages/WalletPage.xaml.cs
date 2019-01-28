@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using SoterDevice.Ble;
 using SoterWalletMobile.Data;
 using SoterWalletMobile.ViewModels;
 using Xamarin.Forms;
@@ -13,7 +14,7 @@ namespace SoterWalletMobile.Pages
         {
             InitializeComponent();
 
-            labelDeviceName.Text = Repository.CurrentDevice.Name;
+            labelDeviceName.Text = string.Format("{0} ({1})", Repository.CurrentDevice.Name, Repository.CurrentDevice.Label);
 
             walletViewModels = Repository.GetWalletViewModels();
             summaryListView.ItemsSource = walletViewModels;
@@ -24,7 +25,16 @@ namespace SoterWalletMobile.Pages
             base.OnAppearing();
         }
 
-        void Handle_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e)
+        async void DeviceNameLabel_Tapped(object sender, System.EventArgs e)
+        {
+            if (await ConnectDevicePage.Connect(this))
+            {
+                await Repository.LoadCoinTableFromDeviceAsync(SoterDeviceFactoryBle.Instance.CurrentDevice);
+                SoterDeviceFactoryBle.Instance.CurrentDevice.Disconnect();
+            }
+        }
+
+        void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
         {
 
         }

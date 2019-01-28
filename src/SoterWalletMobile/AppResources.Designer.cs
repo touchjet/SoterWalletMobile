@@ -71,6 +71,42 @@ namespace SoterWalletMobile {
             }
         }
         
+        public static string Connecting {
+            get {
+                return ResourceManager.GetString("Connecting", resourceCulture);
+            }
+        }
+        
+        public static string Error {
+            get {
+                return ResourceManager.GetString("Error", resourceCulture);
+            }
+        }
+        
+        public static string UnableToConnect {
+            get {
+                return ResourceManager.GetString("UnableToConnect", resourceCulture);
+            }
+        }
+        
+        public static string StartPairing {
+            get {
+                return ResourceManager.GetString("StartPairing", resourceCulture);
+            }
+        }
+        
+        public static string Connect {
+            get {
+                return ResourceManager.GetString("Connect", resourceCulture);
+            }
+        }
+        
+        public static string TurnOnWalletMessage {
+            get {
+                return ResourceManager.GetString("TurnOnWalletMessage", resourceCulture);
+            }
+        }
+        
         public static string EnterCurrentPin {
             get {
                 return ResourceManager.GetString("EnterCurrentPin", resourceCulture);
@@ -89,15 +125,21 @@ namespace SoterWalletMobile {
             }
         }
         
+        public static string OK {
+            get {
+                return ResourceManager.GetString("OK", resourceCulture);
+            }
+        }
+        
         public static string EnterButton {
             get {
                 return ResourceManager.GetString("EnterButton", resourceCulture);
             }
         }
         
-        public static string CancelButton {
+        public static string ClearButton {
             get {
-                return ResourceManager.GetString("CancelButton", resourceCulture);
+                return ResourceManager.GetString("ClearButton", resourceCulture);
             }
         }
         

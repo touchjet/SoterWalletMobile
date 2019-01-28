@@ -45,7 +45,7 @@
                 <Button ClassId="3" Clicked="PIN_Clicked" Image="blueButton" VerticalOptions="Center" WidthRequest="44" HeightRequest="44" Grid.Column="2" Grid.Row="2" />
             </Grid>
             <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Grid.Row="9" Grid.Column="1">
-                <Button x:Name="cancelButton" Clicked="Cancel_Clicked" Text="{x:Static resx:AppResources.CancelButton}" Style="{StaticResource grayTextButtonStyle}" HorizontalOptions="Center" />
+                <Button x:Name="cancelButton" Clicked="Cancel_Clicked" Text="{x:Static resx:AppResources.ClearButton}" Style="{StaticResource grayTextButtonStyle}" HorizontalOptions="Center" />
                 <BoxView HeightRequest="25" WidthRequest="1" Color="#DFE1BB" HorizontalOptions="Center" Margin="30,0,30,0" />
                 <Button x:Name="confirmButton" Clicked="Confirm_Clicked" Text="{x:Static resx:AppResources.EnterButton}" Style="{StaticResource blueTextButtonStyle}" HorizontalOptions="Center" />
             </StackLayout>

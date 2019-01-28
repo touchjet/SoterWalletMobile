@@ -24,6 +24,24 @@
     <data name="Settings" xml:space="preserve">
         <value>Settings</value>
     </data>
+    <data name="Connecting" xml:space="preserve">
+        <value>Connecting...</value>
+    </data>
+    <data name="Error" xml:space="preserve">
+        <value>Error</value>
+    </data>
+    <data name="UnableToConnect" xml:space="preserve">
+        <value>Unable to connect to the Soter Wallet device, please make sure the device is turned on and within 1 meter from your mobile phone.</value>
+    </data>
+    <data name="StartPairing" xml:space="preserve">
+        <value>Start Pairing</value>
+    </data>
+    <data name="Connect" xml:space="preserve">
+        <value>Connect</value>
+    </data>
+    <data name="TurnOnWalletMessage" xml:sapce="preserve">
+        <value>Press and hold the power button to turn on Soter Wallet.</value>
+    </data>
     <data name="EnterCurrentPin" xml:space="preserve">
         <value>Enter Current PIN</value>
     </data>
@@ -33,11 +51,14 @@
     <data name="ReEnterCurrentPin" xml:space="preserve">
         <value>Re-enter Current PIN</value>
     </data>
+    <data name="OK" xml:space="preserve">
+        <value>OK</value>
+    </data>
     <data name="EnterButton" xml:space="preserve">
         <value>ENTER</value>
     </data>
-    <data name="CancelButton" xml:space="preserve">
-        <value>CANCEL</value>
+    <data name="ClearButton" xml:space="preserve">
+        <value>CLEAR</value>
     </data>
     <data name="PinPageHintMessage" xml:space="preserve">
         <value>Use PIN layout shown on the Soter Wallet device screen to find the location to press on the PIN pad below.</value>
