@@ -1,6 +1,5 @@
 ﻿using System.Collections.ObjectModel;
 using SoterWalletMobile.Data;
-using SoterWalletMobile.Helpers;
 using SoterWalletMobile.ViewModels;
 using Xamarin.Forms;
 
@@ -14,7 +13,7 @@ namespace SoterWalletMobile.Pages
         {
             InitializeComponent();
 
-            labelDeviceName.Text = Settings.DeviceName;
+            labelDeviceName.Text = Repository.CurrentDevice.Name;
 
             walletViewModels = Repository.GetWalletViewModels();
             summaryListView.ItemsSource = walletViewModels;

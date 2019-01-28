@@ -48,6 +48,30 @@ namespace SoterWalletMobile.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "WalletDevices",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(nullable: true),
+                    BleGuid = table.Column<string>(nullable: true),
+                    Label = table.Column<string>(nullable: true),
+                    Uuid = table.Column<string>(nullable: true),
+                    Model = table.Column<string>(nullable: true),
+                    Initialized = table.Column<bool>(nullable: false),
+                    MajorVersion = table.Column<uint>(nullable: false),
+                    MinorVersion = table.Column<uint>(nullable: false),
+                    PatchVersion = table.Column<uint>(nullable: false),
+                    Language = table.Column<string>(nullable: true),
+                    BootloaderHash = table.Column<string>(nullable: true),
+                    FirmwareHash = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_WalletDevices", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Addresses",
                 columns: table => new
                 {
@@ -130,6 +154,9 @@ namespace SoterWalletMobile.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Transactions");
+
+            migrationBuilder.DropTable(
+                name: "WalletDevices");
 
             migrationBuilder.DropTable(
                 name: "Addresses");

@@ -41,9 +41,8 @@ namespace SoterWalletMobile.Pages
                 device.EnterPinCallback -= Device_EnterPinCallback;
                 device.DeviceButtonRequestCallback -= Device_DeviceButtonRequestCallback;
                 await Repository.LoadCoinTableFromDeviceAsync(device);
+                Repository.SaveCurrentDeviceToDb(device);
                 device.Disconnect();
-                Settings.DeviceId = device.Id;
-                Settings.DeviceName = device.Name;
                 Application.Current.MainPage = new NavigationPage(new MainTabbedPage());
             }
         }

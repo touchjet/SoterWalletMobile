@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Threading.Tasks;
 using Plugin.BLE;
 using Plugin.BLE.Abstractions.Contracts;
-using SoterDevice.Ble;
-using SoterWalletMobile.Helpers;
+using SoterWalletMobile.Data;
 using SoterWalletMobile.Pages;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -16,7 +14,7 @@ namespace SoterWalletMobile
         public App()
         {
             InitializeComponent();
-            if (String.IsNullOrEmpty(Settings.DeviceName))
+            if (String.IsNullOrEmpty(Repository.CurrentDevice.Name))
             {
                 if (CrossBluetoothLE.Current.State == BluetoothState.On)
                 {

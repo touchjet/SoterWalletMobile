@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Plugin.Permissions;
@@ -10,7 +9,6 @@ using SkiaSharp.Views.Forms;
 using SoterDevice;
 using SoterDevice.Ble;
 using SoterWalletMobile.Data;
-using SoterWalletMobile.Helpers;
 using Xamarin.Forms;
 
 namespace SoterWalletMobile.Pages
@@ -99,9 +97,8 @@ namespace SoterWalletMobile.Pages
                     }
                     if (device.Features.Initialized)
                     {
+                        Repository.SaveCurrentDeviceToDb(device);
                         await Repository.LoadCoinTableFromDeviceAsync(device);
-                        Settings.DeviceName = device.Name;
-                        Settings.DeviceId = device.Id;
                         device.Disconnect();
                         Application.Current.MainPage = new NavigationPage(new MainTabbedPage());
                         return;

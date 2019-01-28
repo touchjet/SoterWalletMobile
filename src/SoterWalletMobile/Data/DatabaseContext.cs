@@ -12,6 +12,7 @@ namespace SoterWalletMobile.Data
         public DbSet<Coin> Coins { get; set; }
         public DbSet<Address> Addresses { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
+        public DbSet<WalletDevice> WalletDevices { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -50,7 +51,6 @@ namespace SoterWalletMobile.Data
                 Log.Error("Fall back to default path: %s", databasePath);
                 databasePath = Path.Combine(Directory.GetCurrentDirectory(), databaseName);
             }
-            Log.Warning($"Database File: {databasePath}");
             // Specify that we will use sqlite and the path of the database here
             optionsBuilder.UseSqlite($"Filename={databasePath}");
         }

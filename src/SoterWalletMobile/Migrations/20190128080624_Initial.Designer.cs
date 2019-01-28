@@ -9,7 +9,7 @@ using SoterWalletMobile.Data;
 namespace SoterWalletMobile.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20190126092542_Initial")]
+    [Migration("20190128080624_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -143,6 +143,40 @@ namespace SoterWalletMobile.Migrations
                         .IsUnique();
 
                     b.ToTable("Transactions");
+                });
+
+            modelBuilder.Entity("SoterWalletMobile.Models.WalletDevice", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("BleGuid");
+
+                    b.Property<string>("BootloaderHash");
+
+                    b.Property<string>("FirmwareHash");
+
+                    b.Property<bool>("Initialized");
+
+                    b.Property<string>("Label");
+
+                    b.Property<string>("Language");
+
+                    b.Property<uint>("MajorVersion");
+
+                    b.Property<uint>("MinorVersion");
+
+                    b.Property<string>("Model");
+
+                    b.Property<string>("Name");
+
+                    b.Property<uint>("PatchVersion");
+
+                    b.Property<string>("Uuid");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("WalletDevices");
                 });
 
             modelBuilder.Entity("SoterWalletMobile.Models.Address", b =>
