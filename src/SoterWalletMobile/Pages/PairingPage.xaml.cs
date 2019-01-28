@@ -97,10 +97,7 @@ namespace SoterWalletMobile.Pages
                     }
                     if (device.Features.Initialized)
                     {
-                        Repository.SaveCurrentDeviceToDb(device);
-                        await Repository.LoadCoinTableFromDeviceAsync(device);
-                        device.Disconnect();
-                        Application.Current.MainPage = new NavigationPage(new MainTabbedPage());
+                        Application.Current.MainPage = new NavigationPage(new DeviceCommPage(CommStage.UpdateCoinTable));
                         return;
                     }
                     else

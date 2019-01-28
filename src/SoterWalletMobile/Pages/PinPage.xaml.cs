@@ -1,7 +1,9 @@
 ﻿using System;
-using Serilog;
+using System.Threading;
+using System.Threading.Tasks;
 using SkiaSharp;
 using SkiaSharp.Views.Forms;
+using SoterDevice.Ble;
 using SoterDevice.Contracts;
 using Xamarin.Forms;
 
@@ -9,16 +11,45 @@ namespace SoterWalletMobile.Pages
 {
     public partial class PinPage : ContentPage
     {
+        static Page _parentPage;
+        public static Page ParentPage
+        {
+            set
+            {
+                if (value != null)
+                {
+                    SoterDeviceFactoryBle.Instance.CurrentDevice.EnterPinCallback += Device_EnterPinCallback;
+                }
+                else
+                {
+                    SoterDeviceFactoryBle.Instance.CurrentDevice.EnterPinCallback -= Device_EnterPinCallback;
+                }
+                _parentPage = value;
+            }
+        }
+
         public static string PIN = String.Empty;
+
+        public static async Task<String> Device_EnterPinCallback(PinMatrixRequestType pinType)
+        {
+            var waitHandle = new EventWaitHandle(false, EventResetMode.AutoReset);
+            var pinPage = new PinPage(pinType);
+            pinPage.Disappearing += (sender, e) => { waitHandle.Set(); };
+            await _parentPage.Navigation.PushModalAsync(pinPage);
+            await Task.Run(() => waitHandle.WaitOne());
+            return PinPage.PIN;
+        }
 
         public PinPage()
         {
             InitializeComponent();
+            PIN = String.Empty;
         }
 
         public PinPage(PinMatrixRequestType type)
         {
             InitializeComponent();
+            PIN = String.Empty;
             switch (type)
             {
                 case PinMatrixRequestType.PinMatrixRequestTypeCurrent:
@@ -31,12 +62,6 @@ namespace SoterWalletMobile.Pages
                     titleLabel.Text = AppResources.ReEnterCurrentPin;
                     break;
             }
-        }
-
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-            PIN = String.Empty;
         }
 
         void PIN_Clicked(object sender, System.EventArgs e)
@@ -54,7 +79,7 @@ namespace SoterWalletMobile.Pages
 
         async void Confirm_Clicked(object sender, System.EventArgs e)
         {
-            await Navigation.PopAsync();
+            await Navigation.PopModalAsync();
         }
 
         void OnCanvasViewPaintSurface(object sender, SKPaintSurfaceEventArgs args)

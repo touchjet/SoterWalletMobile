@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:resx="clr-namespace:SoterWalletMobile;assembly=SoterWalletMobile" xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" ios:Page.UseSafeArea="true" Style="{StaticResource lightPageStyle}" x:Class="SoterWalletMobile.Pages.DeviceCommPage">
+    <ContentPage.Content>
+        <Grid Style="{StaticResource gridStyle}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30" />
+                <RowDefinition Height="20" />
+                <RowDefinition Height="60" />
+                <RowDefinition Height="138" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="60" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="20" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="270" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Label x:Name="deviceLabel"  Style="{StaticResource darkMediumLabelStyle}" Grid.Row="1" Grid.Column="1" />
+            <Image Source="SoterWire" Aspect="AspectFill" Grid.Row="3" Grid.Column="1" />
+            <Label x:Name="messageLabel" Text="{x:Static resx:AppResources.InitializeDeviceMessage}" Style="{StaticResource blueSmallLabelStyle}" Grid.Row="5" Grid.Column="1" />
+            <ActivityIndicator x:Name="activityIndicator" Color="{StaticResource darkColor}" IsRunning="true" Grid.Row="7" Grid.Column="1"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -66,6 +66,9 @@
     <data name="SetLabelMessage" xml:space="preserve">
         <value>A lable allows you to distinguish this Soter Wallet device from others that you may own.</value>
     </data>
+    <data name="LoadingMessage" xml:space="preserve">
+        <value>Please wait while accounts and coin information are loaded from the device.</value>
+    </data>
     <data name="InitializeDeviceMessage" xml:space="preserve">
         <value>Initializing the connected Soter Wallet device.</value>
     </data>

@@ -19,7 +19,7 @@ namespace SoterWalletMobile.Pages
 
         void Handle_Clicked(object sender, System.EventArgs e)
         {
-            Application.Current.MainPage = new NavigationPage(new DeviceInitializationPage(deviceLabelEntry.Text));
+            Application.Current.MainPage = new NavigationPage(new DeviceCommPage(CommStage.ResetDevice, deviceLabelEntry.Text));
         }
 
         void Handle_TextChanged(object sender, Xamarin.Forms.TextChangedEventArgs e)

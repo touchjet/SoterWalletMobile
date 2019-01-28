@@ -29,8 +29,7 @@ namespace SoterWalletMobile.Pages
         {
             if (await ConnectDevicePage.Connect(this))
             {
-                await Repository.LoadCoinTableFromDeviceAsync(SoterDeviceFactoryBle.Instance.CurrentDevice);
-                SoterDeviceFactoryBle.Instance.CurrentDevice.Disconnect();
+                await Navigation.PushModalAsync(new DeviceCommPage(CommStage.UpdateCoinTable));
             }
         }
 

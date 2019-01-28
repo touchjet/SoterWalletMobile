@@ -155,6 +155,12 @@ namespace SoterWalletMobile {
             }
         }
         
+        public static string LoadingMessage {
+            get {
+                return ResourceManager.GetString("LoadingMessage", resourceCulture);
+            }
+        }
+        
         public static string InitializeDeviceMessage {
             get {
                 return ResourceManager.GetString("InitializeDeviceMessage", resourceCulture);
