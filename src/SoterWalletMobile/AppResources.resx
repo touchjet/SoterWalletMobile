@@ -24,4 +24,34 @@
     <data name="Settings" xml:space="preserve">
         <value>Settings</value>
     </data>
+    <data name="EnterCurrentPin" xml:space="preserve">
+        <value>Enter Current PIN</value>
+    </data>
+    <data name="EnterNewPin" xml:space="preserve">
+        <value>Enter New PIN</value>
+    </data>
+    <data name="ReEnterCurrentPin" xml:space="preserve">
+        <value>Re-enter Current PIN</value>
+    </data>
+    <data name="EnterButton" xml:space="preserve">
+        <value>ENTER</value>
+    </data>
+    <data name="CancelButton" xml:space="preserve">
+        <value>CANCEL</value>
+    </data>
+    <data name="PinPageHintMessage" xml:space="preserve">
+        <value>Use PIN layout shown on the Soter Wallet device screen to find the location to press on the PIN pad below.</value>
+    </data>
+    <data name="SetLabelMessage" xml:space="preserve">
+        <value>A lable allows you to distinguish this Soter Wallet device from others that you may own.</value>
+    </data>
+    <data name="InitializeDeviceMessage" xml:space="preserve">
+        <value>Initializing the connected Soter Wallet device.</value>
+    </data>
+    <data name="RecoverSentenceMessage" xml:space="preserve">
+        <value>On your Soter Wallet device, confirm you have written down your recovery sentence. This sentence serves as your device's backup. Secure it in a safe place.'</value>
+    </data>
+    <data name="ConfirmWipeMessage" xml:space="preserve">
+        <value>On your Soter Wallet device, confirm you want to wipe your device. This will remove all of its private keys and settings.</value>
+    </data>
 </root>

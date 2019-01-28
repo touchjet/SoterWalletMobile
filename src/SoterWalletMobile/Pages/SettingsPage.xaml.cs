@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+using SoterDevice.Ble;
 using SoterWalletMobile.Data;
 using SoterWalletMobile.Helpers;
 using Xamarin.Forms;
@@ -13,7 +13,19 @@ namespace SoterWalletMobile.Pages
             InitializeComponent();
         }
 
-        void Handle_Clicked(object sender, System.EventArgs e)
+        async void WipeButton_Clicked(object sender, System.EventArgs e)
+        {
+            await SoterDeviceFactoryBle.Instance.ConnectByIdAsync(Settings.DeviceId);
+            await SoterDeviceFactoryBle.Instance.CurrentDevice.WipeDeviceAsync();
+            Settings.DeviceName = String.Empty;
+            using (var db = new DatabaseContext())
+            {
+                db.Database.EnsureDeleted();
+            }
+            Application.Current.MainPage = new StartPairingPage();
+        }
+
+        void ForgetButton_Clicked(object sender, System.EventArgs e)
         {
             Settings.DeviceName = String.Empty;
             using (var db = new DatabaseContext())

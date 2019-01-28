@@ -4,10 +4,12 @@
         <Grid Style="{StaticResource gridStyle}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
-                <RowDefinition Height="44" />
-                <RowDefinition Height="45" />
-                <RowDefinition Height="12" />
+                <RowDefinition Height="20" />
+                <RowDefinition Height="30" />
                 <RowDefinition Height="60" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="12" />
+                <RowDefinition Height="30" />
                 <RowDefinition Height="245" />
                 <RowDefinition Height="65" />
                 <RowDefinition Height="25" />
@@ -18,9 +20,10 @@
                 <ColumnDefinition Width="245" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <Label Text="Enter the PIN number acording to the number sequence displayed on the wallet." Style="{StaticResource graySmallLabelStyle}" Grid.Row="1" Grid.Column="1" />
-            <skia:SKCanvasView x:Name="canvasView" WidthRequest="188" HeightRequest="12" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="3" Grid.Column="1" PaintSurface="OnCanvasViewPaintSurface" />
-            <Grid Style="{StaticResource gridStyle}" Grid.Row="5" Grid.Column="1">
+            <Label x:Name="titleLabel" Text="{x:Static resx:AppResources.EnterCurrentPin}" Style="{StaticResource darkMediumLabelStyle}" Grid.Row="1" Grid.Column="1" />
+            <Label Text="{x:Static resx:AppResources.PinPageHintMessage}" Style="{StaticResource graySmallLabelStyle}" Grid.Row="3" Grid.Column="1" />
+            <skia:SKCanvasView x:Name="canvasView" WidthRequest="188" HeightRequest="12" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="5" Grid.Column="1" PaintSurface="OnCanvasViewPaintSurface" />
+            <Grid Style="{StaticResource gridStyle}" Grid.Row="7" Grid.Column="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
@@ -41,10 +44,10 @@
                 <Button ClassId="2" Clicked="PIN_Clicked" Image="blueButton" VerticalOptions="Center" WidthRequest="44" HeightRequest="44" Grid.Column="1" Grid.Row="2" />
                 <Button ClassId="3" Clicked="PIN_Clicked" Image="blueButton" VerticalOptions="Center" WidthRequest="44" HeightRequest="44" Grid.Column="2" Grid.Row="2" />
             </Grid>
-            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Grid.Row="7" Grid.Column="1">
-                <Button x:Name="cancelButton" Clicked="Cancel_Clicked" Text="CANCEL" Style="{StaticResource grayTextButtonStyle}" HorizontalOptions="Center" />
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Grid.Row="9" Grid.Column="1">
+                <Button x:Name="cancelButton" Clicked="Cancel_Clicked" Text="{x:Static resx:AppResources.CancelButton}" Style="{StaticResource grayTextButtonStyle}" HorizontalOptions="Center" />
                 <BoxView HeightRequest="25" WidthRequest="1" Color="#DFE1BB" HorizontalOptions="Center" Margin="30,0,30,0" />
-                <Button x:Name="confirmButton" Clicked="Confirm_Clicked" Text="ENTER" Style="{StaticResource blueTextButtonStyle}" HorizontalOptions="Center" />
+                <Button x:Name="confirmButton" Clicked="Confirm_Clicked" Text="{x:Static resx:AppResources.EnterButton}" Style="{StaticResource blueTextButtonStyle}" HorizontalOptions="Center" />
             </StackLayout>
         </Grid>
     </ContentPage.Content>

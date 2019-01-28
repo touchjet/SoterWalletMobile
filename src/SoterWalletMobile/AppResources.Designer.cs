@@ -16,7 +16,7 @@ namespace SoterWalletMobile {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class AppResources {
+    public class AppResources {
         
         private static System.Resources.ResourceManager resourceMan;
         
@@ -27,7 +27,7 @@ namespace SoterWalletMobile {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static System.Resources.ResourceManager ResourceManager {
+        public static System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.Equals(null, resourceMan)) {
                     System.Resources.ResourceManager temp = new System.Resources.ResourceManager("SoterWalletMobile.AppResources", typeof(AppResources).Assembly);
@@ -38,7 +38,7 @@ namespace SoterWalletMobile {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static System.Globalization.CultureInfo Culture {
+        public static System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -47,27 +47,87 @@ namespace SoterWalletMobile {
             }
         }
         
-        internal static string Wallet {
+        public static string Wallet {
             get {
                 return ResourceManager.GetString("Wallet", resourceCulture);
             }
         }
         
-        internal static string Send {
+        public static string Send {
             get {
                 return ResourceManager.GetString("Send", resourceCulture);
             }
         }
         
-        internal static string Receive {
+        public static string Receive {
             get {
                 return ResourceManager.GetString("Receive", resourceCulture);
             }
         }
         
-        internal static string Settings {
+        public static string Settings {
             get {
                 return ResourceManager.GetString("Settings", resourceCulture);
+            }
+        }
+        
+        public static string EnterCurrentPin {
+            get {
+                return ResourceManager.GetString("EnterCurrentPin", resourceCulture);
+            }
+        }
+        
+        public static string EnterNewPin {
+            get {
+                return ResourceManager.GetString("EnterNewPin", resourceCulture);
+            }
+        }
+        
+        public static string ReEnterCurrentPin {
+            get {
+                return ResourceManager.GetString("ReEnterCurrentPin", resourceCulture);
+            }
+        }
+        
+        public static string EnterButton {
+            get {
+                return ResourceManager.GetString("EnterButton", resourceCulture);
+            }
+        }
+        
+        public static string CancelButton {
+            get {
+                return ResourceManager.GetString("CancelButton", resourceCulture);
+            }
+        }
+        
+        public static string PinPageHintMessage {
+            get {
+                return ResourceManager.GetString("PinPageHintMessage", resourceCulture);
+            }
+        }
+        
+        public static string SetLabelMessage {
+            get {
+                return ResourceManager.GetString("SetLabelMessage", resourceCulture);
+            }
+        }
+        
+        public static string InitializeDeviceMessage {
+            get {
+                return ResourceManager.GetString("InitializeDeviceMessage", resourceCulture);
+            }
+        }
+        
+        public static string RecoverSentenceMessage {
+            get {
+                return ResourceManager.GetString("RecoverSentenceMessage", resourceCulture);
+            }
+        }
+        
+        public static string ConfirmWipeMessage {
+            get {
+                return ResourceManager.GetString("ConfirmWipeMessage", resourceCulture);
             }
         }
     }

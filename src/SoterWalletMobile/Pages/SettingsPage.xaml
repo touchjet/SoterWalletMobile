@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="SoterWalletMobile.Pages.SettingsPage">
     <ContentPage.Content>
-        <TableView Intent="Settings">
+        <TableView Margin="30,30,30,30" BackgroundColor="{StaticResource lightColor}" Intent="Settings">
             <TableRoot>
                 <TableSection Title="Reset Connection">
                     <ViewCell>
-                        <Button Text="Forget Device" Clicked="Handle_Clicked" Style="{StaticResource normalButtonStyle}" />
+                        <StackLayout Orientation="Vertical">
+                            <Button Text="Wipe Device" Clicked="WipeButton_Clicked" Style="{StaticResource normalButtonStyle}" />
+                            <Button Text="Forget Device" Clicked="ForgetButton_Clicked" Style="{StaticResource normalButtonStyle}" />
+                        </StackLayout>
                     </ViewCell>
                 </TableSection>
             </TableRoot>

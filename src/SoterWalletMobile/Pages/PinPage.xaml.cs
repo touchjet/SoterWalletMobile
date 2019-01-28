@@ -2,6 +2,7 @@
 using Serilog;
 using SkiaSharp;
 using SkiaSharp.Views.Forms;
+using SoterDevice.Contracts;
 using Xamarin.Forms;
 
 namespace SoterWalletMobile.Pages
@@ -15,6 +16,23 @@ namespace SoterWalletMobile.Pages
             InitializeComponent();
         }
 
+        public PinPage(PinMatrixRequestType type)
+        {
+            InitializeComponent();
+            switch (type)
+            {
+                case PinMatrixRequestType.PinMatrixRequestTypeCurrent:
+                    titleLabel.Text = AppResources.EnterCurrentPin;
+                    break;
+                case PinMatrixRequestType.PinMatrixRequestTypeNewFirst:
+                    titleLabel.Text = AppResources.EnterNewPin;
+                    break;
+                case PinMatrixRequestType.PinMatrixRequestTypeNewSecond:
+                    titleLabel.Text = AppResources.ReEnterCurrentPin;
+                    break;
+            }
+        }
+
         protected override void OnAppearing()
         {
             base.OnAppearing();
@@ -24,7 +42,6 @@ namespace SoterWalletMobile.Pages
         void PIN_Clicked(object sender, System.EventArgs e)
         {
             var button = (Button)sender;
-            Log.Information($"PIN {button.ClassId}");
             PIN = PIN + button.ClassId;
             canvasView.InvalidateSurface();
         }
