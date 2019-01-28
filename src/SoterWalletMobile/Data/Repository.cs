@@ -29,17 +29,23 @@ namespace SoterWalletMobile.Data
             }
         }
 
-        public static  ObservableCollection<WalletViewModel> GetWalletViewModels()
+
+        public static ObservableCollection<WalletViewModel> GetWalletViewModels()
         {
             ObservableCollection<WalletViewModel> walletViewModels = new ObservableCollection<WalletViewModel>();
             using (var db = new DatabaseContext())
             {
                 foreach (var coin in db.Coins)
                 {
-                    walletViewModels.Add(new WalletViewModel { Name = coin.CoinName, Shortcut = coin.CoinShortcut, Icon = ImageSource.FromFile(coin.CoinShortcut), Balance = coin.BalanceString, BalanceFiat = "$ 0.00" });
+                    walletViewModels.Add(new WalletViewModel { Name = coin.CoinName, Shortcut = coin.CoinShortcut, Icon = GetIconImageSource(coin.CoinShortcut), Balance = coin.BalanceString, BalanceFiat = "$ 0.00" });
                 }
             }
             return walletViewModels;
+        }
+
+        static ImageSource GetIconImageSource(string coinShortcut)
+        {
+            return ImageSource.FromFile(coinShortcut.Equals("TEST") ? "BTC" : coinShortcut);
         }
     }
 }
