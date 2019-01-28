@@ -33,5 +33,9 @@
 	<string>1.0.0</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>Soter Wallet App uses Bluetooth to communicate with wallet devices.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Soter Wallet App needs camera access for QR Code scanning.</string>
 </dict>
 </plist>
