@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using SoterDevice;
+using SoterDevice.Models;
 using SoterWalletMobile.Helpers;
 using SoterWalletMobile.Models;
 using SoterWalletMobile.ViewModels;
@@ -73,7 +74,9 @@ namespace SoterWalletMobile.Data
                 db.Transactions.Clear();
                 db.Addresses.Clear();
                 db.Coins.Clear();
-                foreach (var coinType in await device.GetCoinTableAsync(72))
+                var coinTable = await device.GetCoinTableAsync(48);
+                device.CoinUtility = new CoinUtility(coinTable);
+                foreach (var coinType in coinTable)
                 {
                     if (SupportedCoins.Any(c => c.Equals(coinType.CoinShortcut)))
                     {
@@ -81,6 +84,22 @@ namespace SoterWalletMobile.Data
                     }
                 }
                 db.SaveChanges();
+                foreach (var coin in db.Coins)
+                {
+                    var addressPath = new BIP44AddressPath(coin.Segwit, AddressUtilities.UnhardenNumber(coin.Bip44AccountPath), 0, false, 0);
+                    var addressStr = await device.GetAddressAsync((IAddressPath)addressPath, false, false);
+                    var address = new Address()
+                    {
+                        CoinId = coin.Id,
+                        Account = 0,
+                        Change = 0,
+                        AddressIndex = 0,
+                        AddressString = addressStr,
+                        Balance = 0,
+                        CoinType = addressPath.CoinType,
+                        Purpose = addressPath.Purpose,
+                    };
+                }
             }
         }
 
