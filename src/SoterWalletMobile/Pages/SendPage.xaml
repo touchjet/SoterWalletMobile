@@ -46,9 +46,9 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <StackLayout Rotation="90" Orientation="Vertical" HeightRequest="60" WidthRequest="60">
-                                    <Image Source="{Binding Icon}" HeightRequest="20" WidthRequest="20" />
-                                    <Label Text="{Binding Name}" Style="{StaticResource graySmallLabelStyle}" HorizontalOptions="Start" VerticalOptions="Center" />
+                                <StackLayout Rotation="90" Padding="10,10,10,10" Orientation="Vertical" HeightRequest="60" WidthRequest="60">
+                                    <Image Source="{Binding Icon}" HeightRequest="30" WidthRequest="30" VerticalOptions="Center" HorizontalOptions="Center" />
+                                    <Label Text="{Binding Shortcut}" Style="{StaticResource darkSmallLabelStyle}" HorizontalOptions="Center" />
                                 </StackLayout>
                             </ViewCell>
                         </DataTemplate>
@@ -61,13 +61,13 @@
                 <Label x:Name="labelCurrency" Style="{StaticResource currencyLabelStyle}" Text="BTC" />
             </StackLayout>
             <Label Text="TO" Style="{StaticResource darkSmallLabelStyle}" HorizontalOptions="Start" Grid.Row="8" Grid.Column="0" />
-            <StackLayout Orientation="Horizontal"  Grid.Row="10" Grid.Column="0">
+            <StackLayout Orientation="Horizontal" Grid.Row="10" Grid.Column="0">
                 <controls:BorderlessEntry x:Name="toAddressEntry" Placeholder="Address (Press and Hold to Paste)" HeightRequest="20" HorizontalOptions="StartAndExpand" />
                 <Image Source="Scan" HorizontalOptions="End">
-                 <Image.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="ScanButton_Tapped" />
-                </Image.GestureRecognizers>
-               </Image>
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="ScanButton_Tapped" />
+                    </Image.GestureRecognizers>
+                </Image>
             </StackLayout>
             <BoxView Color="{StaticResource grayColor}" HeightRequest="1" HorizontalOptions="FillAndExpand" Grid.Row="12" Grid.Column="0" />
             <Label Text="AMOUNT" Style="{StaticResource darkSmallLabelStyle}" HorizontalOptions="Start" Grid.Row="14" Grid.Column="0" />

@@ -1,5 +1,4 @@
 ﻿using System.Collections.ObjectModel;
-using SoterDevice.Ble;
 using SoterWalletMobile.Data;
 using SoterWalletMobile.ViewModels;
 using Xamarin.Forms;
