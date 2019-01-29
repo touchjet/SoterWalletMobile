@@ -8,6 +8,7 @@ namespace SoterWalletMobile.Pages
     {
         bool reEntry;
         string label;
+        bool connected;
         CommStage stage;
 
         public DeviceCommPage()
@@ -15,12 +16,13 @@ namespace SoterWalletMobile.Pages
             InitializeComponent();
         }
 
-        public DeviceCommPage(CommStage stage, string label = "")
+        public DeviceCommPage(CommStage stage, string label = "", bool connected = false)
         {
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
             this.stage = stage;
             this.label = label;
+            this.connected = connected;
             reEntry = false;
         }
 
@@ -30,6 +32,10 @@ namespace SoterWalletMobile.Pages
             if (!reEntry)
             {
                 reEntry = true;
+                if ((!connected) && (!await ConnectDevicePage.Connect(this)))
+                {
+                    await Navigation.PopModalAsync();
+                }
                 var device = SoterDeviceFactoryBle.Instance.CurrentDevice;
                 deviceLabel.Text = device.Name;
                 PinPage.ParentPage = this;

@@ -37,7 +37,6 @@ namespace SoterWalletMobile.Pages
                 messageLabel.Text = AppResources.TurnOnWalletMessage;
                 return;
             }
-            await SoterDeviceFactoryBle.Instance.CurrentDevice.InitializeAsync();
             await Navigation.PopModalAsync();
         }
     }

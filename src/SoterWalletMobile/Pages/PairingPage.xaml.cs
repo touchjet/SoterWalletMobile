@@ -97,7 +97,7 @@ namespace SoterWalletMobile.Pages
                     }
                     if (device.Features.Initialized)
                     {
-                        Application.Current.MainPage = new NavigationPage(new DeviceCommPage(CommStage.UpdateCoinTable));
+                        Application.Current.MainPage = new NavigationPage(new DeviceCommPage(CommStage.UpdateCoinTable,"",true));
                         return;
                     }
                     else
