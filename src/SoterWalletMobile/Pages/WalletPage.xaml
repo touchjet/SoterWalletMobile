@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" ios:Page.UseSafeArea="true" xmlns:resx="clr-namespace:SoterWalletMobile;assembly=SoterWalletMobile" x:Class="SoterWalletMobile.Pages.WalletPage" Style="{StaticResource lightPageStyle}">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" ios:Page.UseSafeArea="true" xmlns:resx="clr-namespace:SoterWalletMobile;assembly=SoterWalletMobile" Style="{StaticResource lightPageStyle}" x:Class="SoterWalletMobile.Pages.WalletPage" >
     <ContentPage.Content>
-        <Grid Style="{StaticResource gridStyle}">
+        <Grid Padding="30,16,30,16" Style="{StaticResource gridStyle}">
             <Grid.RowDefinitions>
-                <RowDefinition Height="16" />
                 <RowDefinition Height="20" />
                 <RowDefinition Height="59" />
                 <RowDefinition Height="14" />
@@ -14,24 +13,22 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="30" />
                 <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="30" />
             </Grid.ColumnDefinitions>
-            <Image Source="SoterLogoSmall" HeightRequest="20" WidthRequest="20" HorizontalOptions="Start" VerticalOptions="Center" Grid.Row="1" Grid.Column="1" />
-            <Label x:Name="labelDeviceName" Text="Soter Wallet" Style="{StaticResource darkMediumLabelStyle}" Grid.Row="1" Grid.Column="1" >
+            <Image Source="SoterLogoSmall" HeightRequest="20" WidthRequest="20" HorizontalOptions="Start" VerticalOptions="Center" Grid.Row="0" Grid.Column="0" />
+            <Label x:Name="labelDeviceName" Text="Soter Wallet" Style="{StaticResource darkMediumLabelStyle}" Grid.Row="0" Grid.Column="0" >
                 <Label.GestureRecognizers>
                     <TapGestureRecognizer Tapped="DeviceNameLabel_Tapped" />
                 </Label.GestureRecognizers>
             </Label>
-            <Label Text="BALANCE" Style="{StaticResource blueSmallLabelStyle}" Grid.Row="3" Grid.Column="1" />
-            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Grid.Row="5" Grid.Column="1">
+            <Label Text="BALANCE" Style="{StaticResource blueSmallLabelStyle}" Grid.Row="2" Grid.Column="0" />
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Grid.Row="4" Grid.Column="0">
                 <Label x:Name="labelCurrency" Style="{StaticResource currencyLabelStyle}" Text="$" />
                 <Label x:Name="labelBalance" Style="{StaticResource balanceLabelStyle}" Text="0.00" />
             </StackLayout>
-            <Image Source="Add" Grid.Row="6" Grid.Column="1" VerticalOptions="End" HorizontalOptions="End" Margin="10,10,10,10" />
-            <BoxView Grid.Row="7" Grid.Column="1" Style="{StaticResource separatorBoxViewStyle}" />
-            <ListView x:Name="summaryListView" SelectionMode="None" ItemTapped="Handle_ItemTapped" RowHeight="83" SeparatorColor="Transparent" Grid.Row="8" Grid.Column="1">
+            <Image Source="Add" Grid.Row="5" Grid.Column="0" VerticalOptions="End" HorizontalOptions="End" Margin="10,10,10,10" />
+            <BoxView Grid.Row="6" Grid.Column="0" Style="{StaticResource separatorBoxViewStyle}" />
+            <ListView x:Name="summaryListView" SelectionMode="None" ItemTapped="Handle_ItemTapped" RowHeight="83" SeparatorColor="Transparent" Grid.Row="7" Grid.Column="0">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
