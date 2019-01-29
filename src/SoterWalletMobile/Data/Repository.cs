@@ -13,7 +13,7 @@ namespace SoterWalletMobile.Data
 {
     public static class Repository
     {
-        public static readonly string[] SupportedCoins = { "BTC", "TEST", "DODGE", "LTC" };
+        public static readonly string[] SupportedCoins = { "BTC", "TEST", "DOGE", "LTC" };
 
         static WalletDevice _currentDevice;
         public static WalletDevice CurrentDevice
