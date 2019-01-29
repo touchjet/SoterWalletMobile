@@ -135,8 +135,9 @@ namespace SoterWalletMobile.Data
                 {
                     bitcoinService = GetBitcoinService(address.Coin);
                     var bal = await bitcoinService.GetBalanceAsync(address.AddressString);
-                    address.ConfirmedBalance = (ulong)bal.Balance;
-                    address.UnconfirmedBalance = (ulong)bal.UnconfirmedBalance;
+                    address.ConfirmedBalance = bal.Balance;
+                    address.UnconfirmedBalance = bal.UnconfirmedBalance;
+                    db.Addresses.Update(address);
                 }
                 await db.SaveChangesAsync();
                 foreach (var coin in db.Coins.Include(c=>c.Addresses))
