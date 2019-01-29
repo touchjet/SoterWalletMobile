@@ -11,5 +11,20 @@ namespace SoterWalletMobile.Pages
         {
             InitializeComponent();
         }
+
+        void ScanButton_Tapped(object sender, System.EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        void NextButton_Clicked(object sender, System.EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        void CoinList_ItemSelected(object sender, Xamarin.Forms.SelectedItemChangedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -1,5 +1,88 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="SoterWalletMobile.Pages.SendPage">
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" ios:Page.UseSafeArea="true" xmlns:resx="clr-namespace:SoterWalletMobile;assembly=SoterWalletMobile" xmlns:controls="clr-namespace:SoterWalletMobile.Controls;assembly=SoterWalletMobile" Style="{StaticResource lightPageStyle}" x:Class="SoterWalletMobile.Pages.SendPage">
     <ContentPage.Content>
+        <Grid Padding="30,16,30,16" Style="{StaticResource gridStyle}">
+            <Grid.RowDefinitions>
+                <!-- Send -->
+                <RowDefinition Height="20" />
+                <RowDefinition Height="25" />
+                <!-- Coin Selection -->
+                <RowDefinition Height="60" />
+                <RowDefinition Height="45" />
+                <!-- BALANCE -->
+                <RowDefinition Height="20" />
+                <RowDefinition Height="15" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="45" />
+                <!-- To Address -->
+                <RowDefinition Height="14" />
+                <RowDefinition Height="14" />
+                <RowDefinition Height="20" />
+                <RowDefinition Height="10" />
+                <RowDefinition Height="1" />
+                <RowDefinition Height="30" />
+                <!-- AMOUNT -->
+                <RowDefinition Height="14" />
+                <RowDefinition Height="14" />
+                <RowDefinition Height="20" />
+                <RowDefinition Height="10" />
+                <RowDefinition Height="1" />
+                <RowDefinition Height="30" />
+                <!-- Fees -->
+                <RowDefinition Height="20" />
+                <RowDefinition Height="20" />
+                <RowDefinition Height="20" />
+                <RowDefinition Height="30" />
+                <!-- Next -->
+                <RowDefinition Height="40" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Label Text="Send" Style="{StaticResource darkMediumLabelStyle}" Grid.Row="0" Grid.Column="0" />
+            <RelativeLayout HeightRequest="60" Grid.Row="2" Grid.Column="0">
+                <ListView x:Name="coinListView" ItemSelected="CoinList_ItemSelected" RowHeight="60" Rotation="270" SeparatorColor="Transparent" RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.5, Constant=-30}" RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=-0.5, Constant=30}" RelativeLayout.WidthConstraint="{ConstraintExpression Type=Constant, Constant=60}" RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Rotation="90" Orientation="Vertical" HeightRequest="60" WidthRequest="60">
+                                    <Image Source="{Binding Icon}" HeightRequest="20" WidthRequest="20" />
+                                    <Label Text="{Binding Name}" Style="{StaticResource graySmallLabelStyle}" HorizontalOptions="Start" VerticalOptions="Center" />
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </RelativeLayout>
+            <Label Text="BALANCE" Style="{StaticResource blueSmallLabelStyle}" Grid.Row="4" Grid.Column="0" />
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Grid.Row="6" Grid.Column="0">
+                <Label x:Name="labelBalance" Style="{StaticResource balanceLabelStyle}" Text="0.00" />
+                <Label x:Name="labelCurrency" Style="{StaticResource currencyLabelStyle}" Text="BTC" />
+            </StackLayout>
+            <Label Text="TO" Style="{StaticResource darkSmallLabelStyle}" HorizontalOptions="Start" Grid.Row="8" Grid.Column="0" />
+            <StackLayout Orientation="Horizontal" Grid.Row="10" Grid.Column="0">
+                <controls:BorderlessEntry x:Name="toAddressEntry" Placeholder="Address (Press and Hold to Paste)" HeightRequest="20" HorizontalOptions="StartAndExpand" />
+                <Image Source="Scan" HorizontalOptions="End">
+                 <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="ScanButton_Tapped" />
+                </Image.GestureRecognizers>
+               </Image>
+            </StackLayout>
+            <BoxView Color="{StaticResource grayColor}" HeightRequest="1" HorizontalOptions="FillAndExpand" Grid.Row="12" Grid.Column="0" />
+            <Label Text="AMOUNT" Style="{StaticResource darkSmallLabelStyle}" HorizontalOptions="Start" Grid.Row="14" Grid.Column="0" />
+            <StackLayout Orientation="Horizontal" HeightRequest="20" Grid.Row="16" Grid.Column="0">
+                <controls:BorderlessEntry x:Name="amountEntry" Placeholder="Amount to Send" HeightRequest="20" HorizontalOptions="StartAndExpand" />
+                <Button x:Name="allButton" Text="ALL" WidthRequest="40" CornerRadius="2" Style="{StaticResource normalButtonStyle}" HorizontalOptions="End" />
+            </StackLayout>
+            <BoxView Color="{StaticResource grayColor}" HeightRequest="1" HorizontalOptions="FillAndExpand" Grid.Row="18" Grid.Column="0" />
+            <Slider x:Name="feeSlider" Value="0.5" Grid.Row="20" Grid.Column="0" />
+            <StackLayout Orientation="Horizontal" Grid.Row="22" Grid.Column="0">
+                <Label Text="SLOW" Style="{StaticResource graySmallLabelStyle}" HorizontalOptions="Start" />
+                <Label Text="0.001" Style="{StaticResource graySmallLabelStyle}" HorizontalOptions="CenterAndExpand" />
+                <Label Text="FAST" Style="{StaticResource graySmallLabelStyle}" HorizontalOptions="End" />
+            </StackLayout>
+            <Button x:Name="nextButton" Text="Next" Clicked="NextButton_Clicked" Style="{StaticResource normalButtonStyle}" Grid.Row="24" Grid.Column="0" />
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

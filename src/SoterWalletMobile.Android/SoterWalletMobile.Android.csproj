@@ -120,6 +120,7 @@
     <AndroidResource Include="Resources\drawable\SoterWire.png" />
     <AndroidResource Include="Resources\drawable\SoterWirePwr.png" />
     <AndroidResource Include="Resources\drawable\Wallet.png" />
+    <AndroidResource Include="Resources\drawable\Scan.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />
