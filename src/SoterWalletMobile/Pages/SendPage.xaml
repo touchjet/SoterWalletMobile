@@ -17,14 +17,14 @@
                 <!-- To Address -->
                 <RowDefinition Height="14" />
                 <RowDefinition Height="14" />
-                <RowDefinition Height="20" />
+                <RowDefinition Height="22" />
                 <RowDefinition Height="10" />
                 <RowDefinition Height="1" />
                 <RowDefinition Height="30" />
                 <!-- AMOUNT -->
                 <RowDefinition Height="14" />
                 <RowDefinition Height="14" />
-                <RowDefinition Height="20" />
+                <RowDefinition Height="30" />
                 <RowDefinition Height="10" />
                 <RowDefinition Height="1" />
                 <RowDefinition Height="30" />
@@ -61,7 +61,7 @@
                 <Label x:Name="labelCurrency" Style="{StaticResource currencyLabelStyle}" Text="BTC" />
             </StackLayout>
             <Label Text="TO" Style="{StaticResource darkSmallLabelStyle}" HorizontalOptions="Start" Grid.Row="8" Grid.Column="0" />
-            <StackLayout Orientation="Horizontal" Grid.Row="10" Grid.Column="0">
+            <StackLayout Orientation="Horizontal"  Grid.Row="10" Grid.Column="0">
                 <controls:BorderlessEntry x:Name="toAddressEntry" Placeholder="Address (Press and Hold to Paste)" HeightRequest="20" HorizontalOptions="StartAndExpand" />
                 <Image Source="Scan" HorizontalOptions="End">
                  <Image.GestureRecognizers>
@@ -71,7 +71,7 @@
             </StackLayout>
             <BoxView Color="{StaticResource grayColor}" HeightRequest="1" HorizontalOptions="FillAndExpand" Grid.Row="12" Grid.Column="0" />
             <Label Text="AMOUNT" Style="{StaticResource darkSmallLabelStyle}" HorizontalOptions="Start" Grid.Row="14" Grid.Column="0" />
-            <StackLayout Orientation="Horizontal" HeightRequest="20" Grid.Row="16" Grid.Column="0">
+            <StackLayout Orientation="Horizontal" HeightRequest="30" Grid.Row="16" Grid.Column="0">
                 <controls:BorderlessEntry x:Name="amountEntry" Placeholder="Amount to Send" HeightRequest="20" HorizontalOptions="StartAndExpand" />
                 <Button x:Name="allButton" Text="ALL" WidthRequest="40" CornerRadius="2" Style="{StaticResource normalButtonStyle}" HorizontalOptions="End" />
             </StackLayout>
