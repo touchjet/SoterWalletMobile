@@ -19,9 +19,10 @@ namespace SoterWalletMobile.Pages
             summaryListView.ItemsSource = walletViewModels;
         }
 
-        protected override void OnAppearing()
+        protected override async void OnAppearing()
         {
             base.OnAppearing();
+            await Repository.UpdateBalance();
         }
 
         async void DeviceNameLabel_Tapped(object sender, System.EventArgs e)

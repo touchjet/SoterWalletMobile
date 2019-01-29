@@ -16,7 +16,8 @@ namespace SoterWalletMobile.Models
         public uint Change { get; set; }
         public uint AddressIndex { get; set; }
         public string AddressString { get; set; }
-        public ulong Balance { get; set; }
+        public ulong ConfirmedBalance { get; set; }
+        public ulong UnconfirmedBalance { get; set; }
 
         public Coin Coin { get; set; }
         public List<Transaction> Transactions { get; set; }

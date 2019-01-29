@@ -1,6 +1,9 @@
 ﻿using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
+using BlockchainService.Abstractions;
+using BlockchainService.BlockCypherProxy.Client;
+using Microsoft.EntityFrameworkCore;
 using SoterDevice;
 using SoterDevice.Models;
 using SoterWalletMobile.Helpers;
@@ -95,23 +98,70 @@ namespace SoterWalletMobile.Data
                         Change = 0,
                         AddressIndex = 0,
                         AddressString = addressStr,
-                        Balance = 0,
                         CoinType = addressPath.CoinType,
                         Purpose = addressPath.Purpose,
                     };
+                    db.Addresses.Add(address);
                 }
+                db.SaveChanges();
             }
         }
 
-
-        public static ObservableCollection<WalletViewModel> GetWalletViewModels()
+        readonly static IBitcoinServiceFactory bitcoinServiceFactory = new BitcoinServiceFactory("https://proxy1.digbig.io");
+        public static IBitcoinService GetBitcoinService(Coin coin)
         {
-            ObservableCollection<WalletViewModel> walletViewModels = new ObservableCollection<WalletViewModel>();
+            switch (coin.CoinShortcut)
+            {
+                case "TEST":
+                    return bitcoinServiceFactory.GetService(CoinTypes.Bitcoin, true);
+                case "BTC":
+                    return bitcoinServiceFactory.GetService(CoinTypes.Bitcoin, false);
+                case "LTC":
+                    return bitcoinServiceFactory.GetService(CoinTypes.Litecoin, false);
+                case "DOGE":
+                    return bitcoinServiceFactory.GetService(CoinTypes.Dogecoin, false);
+            }
+            throw new System.Exception($"Coin {coin.CoinName} not supported!");
+        }
+
+        public static async Task UpdateBalance()
+        {
+            IBitcoinService bitcoinService;
             using (var db = new DatabaseContext())
             {
-                foreach (var coin in db.Coins)
+                await db.SaveChangesAsync();
+
+                foreach (var address in db.Addresses.Include(a=>a.Coin))
                 {
-                    walletViewModels.Add(new WalletViewModel { Name = coin.CoinName, Shortcut = coin.CoinShortcut, Icon = GetIconImageSource(coin.CoinShortcut), Balance = coin.BalanceString, BalanceFiat = "$ 0.00" });
+                    bitcoinService = GetBitcoinService(address.Coin);
+                    var bal = await bitcoinService.GetBalanceAsync(address.AddressString);
+                    address.ConfirmedBalance = (ulong)bal.Balance;
+                    address.UnconfirmedBalance = (ulong)bal.UnconfirmedBalance;
+                }
+                await db.SaveChangesAsync();
+                foreach (var coin in db.Coins.Include(c=>c.Addresses))
+                {
+                    var viewModel = walletViewModels.SingleOrDefault(v => v.Shortcut.Equals(coin.CoinShortcut));
+                    if (viewModel != null)
+                    {
+                        viewModel.Balance = coin.BalanceString;
+                    }
+                }
+            }
+
+        }
+
+        static ObservableCollection<WalletViewModel> walletViewModels = new ObservableCollection<WalletViewModel>();
+        public static ObservableCollection<WalletViewModel> GetWalletViewModels()
+        {
+            using (var db = new DatabaseContext())
+            {
+                foreach (var coin in db.Coins.Include(c=>c.Addresses))
+                {
+                    if (!walletViewModels.Any(v => v.Shortcut.Equals(coin.CoinShortcut)))
+                    {
+                        walletViewModels.Add(new WalletViewModel { Name = coin.CoinName, Shortcut = coin.CoinShortcut, Icon = GetIconImageSource(coin.CoinShortcut), Balance = coin.BalanceString, BalanceFiat = "$ 0.00" });
+                    }
                 }
             }
             return walletViewModels;

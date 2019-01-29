@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
 using SoterDevice.Contracts;
 
 namespace SoterWalletMobile.Models
@@ -72,11 +73,21 @@ namespace SoterWalletMobile.Models
         public bool Enabled { get; set; }
         public DateTime LastNetworkUpdate { get; set; }
         public ulong BlockHeight { get; set; }
-        public ulong TotalBalance { get; set; }
 
         public List<Address> Addresses { get; set; }
 
-        public string BalanceString => String.Format("{0} {1}", TotalBalance / Math.Pow(10, Decimals), CoinShortcut);
+        public string BalanceString
+        {
+            get
+            {
+                Decimal totalBalance = 0;
+                if (Addresses.Count > 0)
+                {
+                    totalBalance = Addresses.Sum(a => (Decimal)a.ConfirmedBalance + (Decimal)a.UnconfirmedBalance) / (Decimal)Math.Pow(10, Decimals);
+                }
+                return String.Format("{0} {1}", totalBalance, CoinShortcut);
+            }
+        }
     }
 }
 

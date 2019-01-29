@@ -23,6 +23,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoterDevice.Ble", "..\devic
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoterWalletMobile.DbConfig", "SoterWalletMobile.DbConfig\SoterWalletMobile.DbConfig.csproj", "{BA3E965A-CE91-4A30-B31F-8F475240EF39}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BlockchainServiceClient", "BlockchainServiceClient", "{82F08EC5-7870-46C3-97F5-E8A1761F2A04}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlockchainService.Abstractions", "..\blockchain-service\src\BlockchainService.Abstractions\BlockchainService.Abstractions.csproj", "{4F8CBCB3-4E72-458A-A68F-C97CA069B894}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlockchainService.BlockCypherProxy.Client", "..\blockchain-service\src\BlockchainService.BlockCypherProxy.Client\BlockchainService.BlockCypherProxy.Client.csproj", "{AF8B45B5-AC40-45C2-A808-62956F9B0722}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -195,6 +201,38 @@ Global
 		{BA3E965A-CE91-4A30-B31F-8F475240EF39}.Ad-Hoc|iPhone.Build.0 = Release|Any CPU
 		{BA3E965A-CE91-4A30-B31F-8F475240EF39}.AppStore|iPhone.ActiveCfg = Release|Any CPU
 		{BA3E965A-CE91-4A30-B31F-8F475240EF39}.AppStore|iPhone.Build.0 = Release|Any CPU
+		{4F8CBCB3-4E72-458A-A68F-C97CA069B894}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F8CBCB3-4E72-458A-A68F-C97CA069B894}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F8CBCB3-4E72-458A-A68F-C97CA069B894}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F8CBCB3-4E72-458A-A68F-C97CA069B894}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F8CBCB3-4E72-458A-A68F-C97CA069B894}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{4F8CBCB3-4E72-458A-A68F-C97CA069B894}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{4F8CBCB3-4E72-458A-A68F-C97CA069B894}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{4F8CBCB3-4E72-458A-A68F-C97CA069B894}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{4F8CBCB3-4E72-458A-A68F-C97CA069B894}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{4F8CBCB3-4E72-458A-A68F-C97CA069B894}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{4F8CBCB3-4E72-458A-A68F-C97CA069B894}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{4F8CBCB3-4E72-458A-A68F-C97CA069B894}.Release|iPhone.Build.0 = Release|Any CPU
+		{4F8CBCB3-4E72-458A-A68F-C97CA069B894}.Ad-Hoc|iPhone.ActiveCfg = Release|Any CPU
+		{4F8CBCB3-4E72-458A-A68F-C97CA069B894}.Ad-Hoc|iPhone.Build.0 = Release|Any CPU
+		{4F8CBCB3-4E72-458A-A68F-C97CA069B894}.AppStore|iPhone.ActiveCfg = Release|Any CPU
+		{4F8CBCB3-4E72-458A-A68F-C97CA069B894}.AppStore|iPhone.Build.0 = Release|Any CPU
+		{AF8B45B5-AC40-45C2-A808-62956F9B0722}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF8B45B5-AC40-45C2-A808-62956F9B0722}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF8B45B5-AC40-45C2-A808-62956F9B0722}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF8B45B5-AC40-45C2-A808-62956F9B0722}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF8B45B5-AC40-45C2-A808-62956F9B0722}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{AF8B45B5-AC40-45C2-A808-62956F9B0722}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{AF8B45B5-AC40-45C2-A808-62956F9B0722}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{AF8B45B5-AC40-45C2-A808-62956F9B0722}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{AF8B45B5-AC40-45C2-A808-62956F9B0722}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{AF8B45B5-AC40-45C2-A808-62956F9B0722}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{AF8B45B5-AC40-45C2-A808-62956F9B0722}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{AF8B45B5-AC40-45C2-A808-62956F9B0722}.Release|iPhone.Build.0 = Release|Any CPU
+		{AF8B45B5-AC40-45C2-A808-62956F9B0722}.Ad-Hoc|iPhone.ActiveCfg = Release|Any CPU
+		{AF8B45B5-AC40-45C2-A808-62956F9B0722}.Ad-Hoc|iPhone.Build.0 = Release|Any CPU
+		{AF8B45B5-AC40-45C2-A808-62956F9B0722}.AppStore|iPhone.ActiveCfg = Release|Any CPU
+		{AF8B45B5-AC40-45C2-A808-62956F9B0722}.AppStore|iPhone.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{473027C2-63CC-4D98-8830-FB5A09F8E0CE} = {B2D700C2-5858-47EA-B8C8-088160E33C16}
@@ -203,5 +241,7 @@ Global
 		{80C10C11-6FCB-4038-B029-A700039E8F99} = {B2D700C2-5858-47EA-B8C8-088160E33C16}
 		{00F27EFE-B8A3-4FD3-BC1F-1179FA7D91B9} = {B2D700C2-5858-47EA-B8C8-088160E33C16}
 		{DDC1B7F1-7DD6-4E04-8753-BFAB3BFEFEAC} = {B2D700C2-5858-47EA-B8C8-088160E33C16}
+		{4F8CBCB3-4E72-458A-A68F-C97CA069B894} = {82F08EC5-7870-46C3-97F5-E8A1761F2A04}
+		{AF8B45B5-AC40-45C2-A808-62956F9B0722} = {82F08EC5-7870-46C3-97F5-E8A1761F2A04}
 	EndGlobalSection
 EndGlobal
