@@ -18,9 +18,11 @@ namespace SoterWalletMobile.Data
         {
             base.OnModelCreating(modelBuilder);
 
+            modelBuilder.Entity<Coin>().HasOne(c => c.WalletDevice).WithMany(d => d.Coins).HasForeignKey(c => c.WalletDeviceId);
             modelBuilder.Entity<Address>().HasOne(a => a.Coin).WithMany(c => c.Addresses).HasForeignKey(a => a.CoinId);
             modelBuilder.Entity<Transaction>().HasOne(t => t.Address).WithMany(a => a.Transactions).HasForeignKey(t => t.AddressId);
 
+            modelBuilder.Entity<WalletDevice>().HasIndex(d => d.Name).IsUnique();
             modelBuilder.Entity<Coin>().HasIndex(c => c.CoinName).IsUnique();
             modelBuilder.Entity<Coin>().HasIndex(c => c.CoinShortcut).IsUnique();
 

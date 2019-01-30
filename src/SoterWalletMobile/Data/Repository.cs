@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using BlockchainService.Abstractions;
@@ -18,6 +19,25 @@ namespace SoterWalletMobile.Data
     {
         public static readonly string[] SupportedCoins = { "BTC", "TEST", "DOGE", "LTC" };
 
+        public static List<WalletDevice> _walletDevices;
+
+        public static void LoadWalletDevices()
+        {
+            using (var db = new DatabaseContext())
+            {
+                db.Database.EnsureCreated();
+                _walletDevices = db.WalletDevices.ToList();
+                _currentDevice = _walletDevices.FirstOrDefault();
+                if (_currentDevice == null)
+                {
+                    db.WalletDevices.Add(new WalletDevice());
+                    db.SaveChanges();
+                    _currentDevice = db.WalletDevices.First();
+                    _walletDevices.Add(_currentDevice);
+                }
+            }
+        }
+
         static WalletDevice _currentDevice;
         public static WalletDevice CurrentDevice
         {
@@ -25,47 +45,45 @@ namespace SoterWalletMobile.Data
             {
                 if (_currentDevice == null)
                 {
-                    using (var db = new DatabaseContext())
-                    {
-                        db.Database.EnsureCreated();
-                        _currentDevice = db.WalletDevices.SingleOrDefault();
-                        if (_currentDevice == null)
-                        {
-                            db.WalletDevices.Clear();
-                            _currentDevice = new WalletDevice();
-                            db.WalletDevices.Add(_currentDevice);
-                            db.SaveChanges();
-                        }
-                    }
+                    LoadWalletDevices();
                 }
                 return _currentDevice;
+            }
+            set
+            {
+                _currentDevice = value;
             }
         }
 
         public static void SaveCurrentDeviceToDb(ISoterDevice device)
         {
-            _currentDevice = new WalletDevice
-            {
-                Name = device.Name,
-                BleGuid = device.Id,
-                Label = device.Features.Label,
-                Uuid = device.Features.DeviceId,
-                Initialized = device.Features.Initialized,
-                Model = device.Features.Model,
-                BootloaderHash = device.Features.BootloaderHash.ToHex(),
-                FirmwareHash = device.Features.FirmwareHash.ToHex(),
-                Language = device.Features.Language,
-                MajorVersion = device.Features.MajorVersion,
-                MinorVersion = device.Features.MinorVersion,
-                PatchVersion = device.Features.PatchVersion,
-
-            };
-
             using (var db = new DatabaseContext())
             {
-                db.WalletDevices.Clear();
-                db.WalletDevices.Add(_currentDevice);
-                db.SaveChanges();
+                if (_currentDevice.Name.Equals(device.Name))
+                {
+                    db.WalletDevices.Update(_currentDevice);
+                    db.SaveChanges();
+                }
+                else
+                {
+                    db.WalletDevices.Add(new WalletDevice
+                    {
+                        Name = device.Name,
+                        BleGuid = device.Id,
+                        Label = device.Features.Label,
+                        Uuid = device.Features.DeviceId,
+                        Initialized = device.Features.Initialized,
+                        Model = device.Features.Model,
+                        BootloaderHash = device.Features.BootloaderHash.ToHex(),
+                        FirmwareHash = device.Features.FirmwareHash.ToHex(),
+                        Language = device.Features.Language,
+                        MajorVersion = device.Features.MajorVersion,
+                        MinorVersion = device.Features.MinorVersion,
+                        PatchVersion = device.Features.PatchVersion,
+                    });
+                    db.SaveChanges();
+                    _currentDevice = db.WalletDevices.First(w => w.Name.Equals(device.Name));
+                }
             }
         }
 
@@ -131,7 +149,7 @@ namespace SoterWalletMobile.Data
             {
                 await db.SaveChangesAsync();
 
-                foreach (var address in db.Addresses.Include(a=>a.Coin))
+                foreach (var address in db.Addresses.Include(a => a.Coin))
                 {
                     bitcoinService = GetBitcoinService(address.Coin);
                     var bal = await bitcoinService.GetBalanceAsync(address.AddressString);
@@ -140,7 +158,7 @@ namespace SoterWalletMobile.Data
                     db.Addresses.Update(address);
                 }
                 await db.SaveChangesAsync();
-                foreach (var coin in db.Coins.Include(c=>c.Addresses))
+                foreach (var coin in db.Coins.Include(c => c.Addresses))
                 {
                     var viewModel = walletViewModels.SingleOrDefault(v => v.Shortcut.Equals(coin.CoinShortcut));
                     if (viewModel != null)
@@ -157,7 +175,7 @@ namespace SoterWalletMobile.Data
         {
             using (var db = new DatabaseContext())
             {
-                foreach (var coin in db.Coins.Include(c=>c.Addresses))
+                foreach (var coin in db.Coins.Include(c => c.Addresses))
                 {
                     if (!walletViewModels.Any(v => v.Shortcut.Equals(coin.CoinShortcut)))
                     {

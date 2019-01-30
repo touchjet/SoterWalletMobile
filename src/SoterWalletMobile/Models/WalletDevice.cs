@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -21,5 +22,7 @@ namespace SoterWalletMobile.Models
         public string Language { get; set; }
         public string BootloaderHash { get; set; }
         public string FirmwareHash { get; set; }
+
+        public List<Coin> Coins { get; set; }
     }
 }

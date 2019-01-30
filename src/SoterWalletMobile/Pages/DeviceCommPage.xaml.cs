@@ -1,4 +1,6 @@
-﻿using SoterDevice.Ble;
+﻿using System;
+using Serilog;
+using SoterDevice.Ble;
 using SoterWalletMobile.Data;
 using Xamarin.Forms;
 
@@ -36,38 +38,46 @@ namespace SoterWalletMobile.Pages
                 {
                     await Navigation.PopModalAsync();
                 }
-                var device = SoterDeviceFactoryBle.Instance.CurrentDevice;
-                deviceLabel.Text = device.Name;
-                PinPage.ParentPage = this;
-                device.DeviceButtonRequestCallback += Device_DeviceButtonRequestCallback;
-
-                if (stage == CommStage.WipeDevice)
+                try
                 {
-                    messageLabel.Text = AppResources.ConfirmWipeMessage;
-                    await SoterDeviceFactoryBle.Instance.CurrentDevice.WipeDeviceAsync();
-                    stage = CommStage.ResetDevice;
-                }
+                    var device = SoterDeviceFactoryBle.Instance.CurrentDevice;
+                    deviceLabel.Text = device.Name;
+                    PinPage.ParentPage = this;
+                    device.DeviceButtonRequestCallback += Device_DeviceButtonRequestCallback;
 
-                if (stage == CommStage.ResetDevice)
+                    if (stage == CommStage.WipeDevice)
+                    {
+                        messageLabel.Text = AppResources.ConfirmWipeMessage;
+                        await SoterDeviceFactoryBle.Instance.CurrentDevice.WipeDeviceAsync();
+                        stage = CommStage.ResetDevice;
+                    }
+
+                    if (stage == CommStage.ResetDevice)
+                    {
+                        messageLabel.Text = AppResources.InitializeDeviceMessage;
+                        await SoterDeviceFactoryBle.Instance.CurrentDevice.ResetDeviceAsync(label);
+                        stage = CommStage.UpdateCoinTable;
+                    }
+
+                    if (stage == CommStage.UpdateCoinTable)
+                    {
+                        messageLabel.Text = AppResources.LoadingMessage;
+                        await device.InitializeAsync();
+                        Repository.SaveCurrentDeviceToDb(device);
+                        await Repository.LoadCoinTableFromDeviceAsync(device);
+                        stage = CommStage.Done;
+                    }
+
+                    PinPage.ParentPage = null;
+                    device.DeviceButtonRequestCallback -= Device_DeviceButtonRequestCallback;
+                    device.Disconnect();
+                    Application.Current.MainPage = new NavigationPage(new MainTabbedPage());
+                }
+                catch (Exception ex)
                 {
-                    messageLabel.Text = AppResources.InitializeDeviceMessage;
-                    await SoterDeviceFactoryBle.Instance.CurrentDevice.ResetDeviceAsync(label);
-                    stage = CommStage.UpdateCoinTable;
+                    Log.Error(ex.ToString());
+                    await Navigation.PopModalAsync();
                 }
-
-                if (stage == CommStage.UpdateCoinTable)
-                {
-                    messageLabel.Text = AppResources.LoadingMessage;
-                    await device.InitializeAsync();
-                    Repository.SaveCurrentDeviceToDb(device);
-                    await Repository.LoadCoinTableFromDeviceAsync(device);
-                    stage = CommStage.Done;
-                }
-
-                PinPage.ParentPage = null;
-                device.DeviceButtonRequestCallback -= Device_DeviceButtonRequestCallback;
-                device.Disconnect();
-                Application.Current.MainPage = new NavigationPage(new MainTabbedPage());
             }
         }
 

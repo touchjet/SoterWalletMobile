@@ -45,6 +45,7 @@ namespace SoterWalletMobile.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
+        public int WalletDeviceId { get; set; }
         public string CoinName { get; set; }
         public string CoinShortcut { get; set; }
         public uint AddressType { get; set; }
@@ -74,6 +75,7 @@ namespace SoterWalletMobile.Models
         public DateTime LastNetworkUpdate { get; set; }
         public ulong BlockHeight { get; set; }
 
+        public WalletDevice WalletDevice { get; set; }
         public List<Address> Addresses { get; set; }
 
         public string BalanceString

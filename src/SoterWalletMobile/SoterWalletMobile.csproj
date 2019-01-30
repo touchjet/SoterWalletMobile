@@ -19,6 +19,7 @@
     <PackageReference Include="Plugin.Permissions" Version="3.0.0.12" />
     <PackageReference Include="Touchjet.BinaryUtils" Version="1.0.5" />
     <PackageReference Include="Touchjet.NetworkUtils" Version="1.0.2" />
+    <PackageReference Include="NBitcoin" Version="4.1.1.80" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Pages\" />
