@@ -26,6 +26,8 @@ namespace SoterWalletMobile.Data
             using (var db = new DatabaseContext())
             {
                 db.Database.EnsureCreated();
+                db.WalletDevices.RemoveRange(db.WalletDevices.Where(d => string.IsNullOrWhiteSpace(d.Name)));
+                db.SaveChanges();
                 _walletDevices = db.WalletDevices.ToList();
                 _currentDevice = _walletDevices.FirstOrDefault();
                 if (_currentDevice == null)
