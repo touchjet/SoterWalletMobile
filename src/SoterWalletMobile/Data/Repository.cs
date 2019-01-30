@@ -57,10 +57,26 @@ namespace SoterWalletMobile.Data
 
         public static void SaveCurrentDeviceToDb(ISoterDevice device)
         {
+            if (_currentDevice == null)
+            {
+                LoadWalletDevices();
+            }
             using (var db = new DatabaseContext())
             {
-                if (_currentDevice.Name.Equals(device.Name))
+                if (!string.IsNullOrWhiteSpace(_currentDevice.Name) && _currentDevice.Name.Equals(device.Name))
                 {
+                    _currentDevice.BleGuid = device.Id;
+                    _currentDevice.Label = device.Features.Label;
+                    _currentDevice.Uuid = device.Features.DeviceId;
+                    _currentDevice.Initialized = device.Features.Initialized;
+                    _currentDevice.Model = device.Features.Model;
+                    _currentDevice.BootloaderHash = device.Features.BootloaderHash.ToHex();
+                    _currentDevice.FirmwareHash = device.Features.FirmwareHash.ToHex();
+                    _currentDevice.Language = device.Features.Language;
+                    _currentDevice.MajorVersion = device.Features.MajorVersion;
+                    _currentDevice.MinorVersion = device.Features.MinorVersion;
+                    _currentDevice.PatchVersion = device.Features.PatchVersion;
+
                     db.WalletDevices.Update(_currentDevice);
                     db.SaveChanges();
                 }
@@ -101,7 +117,7 @@ namespace SoterWalletMobile.Data
                 {
                     if (SupportedCoins.Any(c => c.Equals(coinType.CoinShortcut)))
                     {
-                        db.Coins.Add(new Models.Coin(coinType));
+                        db.Coins.Add(new Coin(coinType) { WalletDeviceId = _currentDevice.Id });
                     }
                 }
                 db.SaveChanges();
