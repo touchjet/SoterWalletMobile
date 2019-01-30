@@ -4,3 +4,6 @@
 [submodule "blockchain-service"]
 	path = blockchain-service
 	url = https://github.com/touchjet/BlockchainService.git
+[submodule "zxing-net-mobile"]
+	path = zxing-net-mobile
+	url = https://github.com/touchjet/ZXing.Net.Mobile.git
