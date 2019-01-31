@@ -46,7 +46,7 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <StackLayout Rotation="90" Padding="10,5,10,5" Orientation="Vertical" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                                <StackLayout Rotation="90" Padding="10,5,10,5" Orientation="Vertical" WidthRequest="60" HeightRequest="60">
                                     <Image Source="{Binding Icon}" HeightRequest="30" WidthRequest="30" VerticalOptions="Center" HorizontalOptions="Center" />
                                     <Label Text="{Binding Shortcut}" Style="{StaticResource darkSmallLabelStyle}" VerticalOptions="End" HorizontalOptions="Center" />
                                 </StackLayout>
