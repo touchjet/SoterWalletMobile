@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" ios:Page.UseSafeArea="true" xmlns:resx="clr-namespace:SoterWalletMobile;assembly=SoterWalletMobile" Style="{StaticResource lightPageStyle}" x:Class="SoterWalletMobile.Pages.WalletPage" >
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" ios:Page.UseSafeArea="true" xmlns:resx="clr-namespace:SoterWalletMobile;assembly=SoterWalletMobile" Style="{StaticResource lightPageStyle}" x:Class="SoterWalletMobile.Pages.WalletPage">
     <ContentPage.Content>
         <Grid Padding="30,16,30,16" Style="{StaticResource gridStyle}">
             <Grid.RowDefinitions>
@@ -16,7 +16,7 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <Image Source="SoterLogoSmall" HeightRequest="20" WidthRequest="20" HorizontalOptions="Start" VerticalOptions="Center" Grid.Row="0" Grid.Column="0" />
-            <Label x:Name="labelDeviceName" Text="Soter Wallet" Style="{StaticResource darkMediumLabelStyle}" Grid.Row="0" Grid.Column="0" >
+            <Label x:Name="labelDeviceName" Text="Soter Wallet" Style="{StaticResource darkMediumLabelStyle}" Grid.Row="0" Grid.Column="0">
                 <Label.GestureRecognizers>
                     <TapGestureRecognizer Tapped="DeviceNameLabel_Tapped" />
                 </Label.GestureRecognizers>
@@ -45,7 +45,10 @@
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Label Text="{Binding Name}" Style="{StaticResource darkMediumLabelStyle}" HorizontalOptions="Start" Grid.Row="0" Grid.Column="0" />
-                                <Label Text="{Binding Balance}" Style="{StaticResource darkMediumLabelStyle}" HorizontalOptions="End" Grid.Row="0" Grid.Column="1" />
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand" Grid.Row="0" Grid.Column="1">
+                                    <Label Text="{Binding Balance}" Style="{StaticResource darkMediumLabelStyle}" HorizontalOptions="EndAndExpand" />
+                                    <Label Text="{Binding Shortcut}" Style="{StaticResource darkMediumLabelStyle}" HorizontalOptions="End" />
+                                </StackLayout>
                                 <StackLayout Orientation="Horizontal" VerticalOptions="Center" Grid.Row="2" Grid.Column="0">
                                     <Image Source="{Binding Icon}" HeightRequest="20" WidthRequest="20" />
                                     <Label Text="{Binding Shortcut}" Style="{StaticResource graySmallLabelStyle}" HorizontalOptions="Start" VerticalOptions="Center" />

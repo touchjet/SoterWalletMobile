@@ -42,11 +42,11 @@
             </Grid.ColumnDefinitions>
             <Label Text="Send" Style="{StaticResource darkMediumLabelStyle}" Grid.Row="0" Grid.Column="0" />
             <RelativeLayout HeightRequest="60" Grid.Row="2" Grid.Column="0">
-                <ListView x:Name="coinListView" ItemSelected="CoinList_ItemSelected" RowHeight="60" Rotation="270" SeparatorColor="Transparent" RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.5, Constant=-30}" RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=-0.5, Constant=30}" RelativeLayout.WidthConstraint="{ConstraintExpression Type=Constant, Constant=60}" RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}">
+                <ListView x:Name="coinListView" ItemSelected="CoinList_ItemSelected" RowHeight="80" Rotation="270" SeparatorColor="Transparent" RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.5, Constant=-30}" RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=-0.5, Constant=30}" RelativeLayout.WidthConstraint="{ConstraintExpression Type=Constant, Constant=60}" RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <StackLayout Rotation="90" Padding="10,5,10,5" Orientation="Vertical" HeightRequest="60" WidthRequest="60">
+                                <StackLayout Rotation="90" Padding="10,5,10,5" Orientation="Vertical" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                                     <Image Source="{Binding Icon}" HeightRequest="30" WidthRequest="30" VerticalOptions="Center" HorizontalOptions="Center" />
                                     <Label Text="{Binding Shortcut}" Style="{StaticResource darkSmallLabelStyle}" VerticalOptions="End" HorizontalOptions="Center" />
                                 </StackLayout>
@@ -73,7 +73,7 @@
             <Label Text="AMOUNT" Style="{StaticResource darkSmallLabelStyle}" HorizontalOptions="Start" Grid.Row="14" Grid.Column="0" />
             <StackLayout Orientation="Horizontal" HeightRequest="30" Grid.Row="16" Grid.Column="0">
                 <controls:BorderlessEntry x:Name="amountEntry" Placeholder="Amount to Send" HeightRequest="20" HorizontalOptions="StartAndExpand" />
-                <Button x:Name="allButton" Text="ALL" WidthRequest="40" CornerRadius="2" Style="{StaticResource normalButtonStyle}" HorizontalOptions="End" />
+                <Button x:Name="allButton" Text="ALL" Style="{StaticResource sideButtonStyle}" HorizontalOptions="End" />
             </StackLayout>
             <BoxView Color="{StaticResource grayColor}" HeightRequest="1" HorizontalOptions="FillAndExpand" Grid.Row="18" Grid.Column="0" />
             <Slider x:Name="feeSlider" Value="0.5" Grid.Row="20" Grid.Column="0" />

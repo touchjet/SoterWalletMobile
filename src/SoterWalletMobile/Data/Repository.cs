@@ -1,10 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using BlockchainService.Abstractions;
 using BlockchainService.BlockCypherProxy.Client;
 using Microsoft.EntityFrameworkCore;
+using Serilog;
 using SoterDevice;
 using SoterDevice.Models;
 using SoterWalletMobile.Helpers;
@@ -23,20 +25,28 @@ namespace SoterWalletMobile.Data
 
         public static void LoadWalletDevices()
         {
-            using (var db = new DatabaseContext())
+            try
             {
-                db.Database.EnsureCreated();
-                db.WalletDevices.RemoveRange(db.WalletDevices.Where(d => string.IsNullOrWhiteSpace(d.Name)));
-                db.SaveChanges();
-                _walletDevices = db.WalletDevices.ToList();
-                _currentDevice = _walletDevices.FirstOrDefault();
-                if (_currentDevice == null)
+                using (var db = new DatabaseContext())
                 {
-                    db.WalletDevices.Add(new WalletDevice());
+                    db.Database.EnsureCreated();
+                    db.WalletDevices.RemoveRange(db.WalletDevices.Where(d => string.IsNullOrWhiteSpace(d.Name)));
                     db.SaveChanges();
-                    _currentDevice = db.WalletDevices.First();
-                    _walletDevices.Add(_currentDevice);
+                    _walletDevices = db.WalletDevices.ToList();
+                    _currentDevice = _walletDevices.FirstOrDefault();
+                    if (_currentDevice == null)
+                    {
+                        db.WalletDevices.Add(new WalletDevice());
+                        db.SaveChanges();
+                        _currentDevice = db.WalletDevices.First();
+                        _walletDevices.Add(_currentDevice);
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                _currentDevice = new WalletDevice();
+                Log.Error(ex.ToString());
             }
         }
 
@@ -45,7 +55,7 @@ namespace SoterWalletMobile.Data
         {
             get
             {
-                if (_currentDevice == null)
+                if ((_currentDevice == null) || (String.IsNullOrWhiteSpace(_currentDevice.Name)))
                 {
                     LoadWalletDevices();
                 }
@@ -191,15 +201,22 @@ namespace SoterWalletMobile.Data
         static ObservableCollection<WalletViewModel> walletViewModels = new ObservableCollection<WalletViewModel>();
         public static ObservableCollection<WalletViewModel> GetWalletViewModels()
         {
-            using (var db = new DatabaseContext())
+            try
             {
-                foreach (var coin in db.Coins.Include(c => c.Addresses))
+                using (var db = new DatabaseContext())
                 {
-                    if (!walletViewModels.Any(v => v.Shortcut.Equals(coin.CoinShortcut)))
+                    foreach (var coin in db.Coins.Include(c => c.Addresses))
                     {
-                        walletViewModels.Add(new WalletViewModel { Name = coin.CoinName, Shortcut = coin.CoinShortcut, Icon = GetIconImageSource(coin.CoinShortcut), Balance = coin.BalanceString, BalanceFiat = "$ 0.00" });
+                        if (!walletViewModels.Any(v => v.Shortcut.Equals(coin.CoinShortcut)))
+                        {
+                            walletViewModels.Add(new WalletViewModel { Id = coin.Id, Name = coin.CoinName, Shortcut = coin.CoinShortcut, Icon = GetIconImageSource(coin.CoinShortcut), Balance = coin.BalanceString, BalanceFiat = "$ 0.00", DefaultAddress = coin.Addresses.FirstOrDefault().AddressString });
+                        }
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex.ToString());
             }
             return walletViewModels;
         }
@@ -207,6 +224,26 @@ namespace SoterWalletMobile.Data
         static ImageSource GetIconImageSource(string coinShortcut)
         {
             return ImageSource.FromFile(coinShortcut.Equals("TEST") ? "BTC" : coinShortcut);
+        }
+
+        public static List<AddressViewModel> GetAddressViewModels(int coinId)
+        {
+            var addresses = new List<AddressViewModel>();
+            try
+            {
+                using (var db = new DatabaseContext())
+                {
+                    foreach (var address in db.Addresses.Where(a=>a.CoinId==coinId))
+                    {
+                        addresses.Add(new AddressViewModel() { Id = address.Id, CoinId = address.CoinId, AddressString = address.AddressString });
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex.ToString());
+            }
+            return addresses;
         }
     }
 }

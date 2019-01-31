@@ -87,7 +87,7 @@ namespace SoterWalletMobile.Models
                 {
                     totalBalance = Addresses.Sum(a => (Decimal)a.ConfirmedBalance + (Decimal)a.UnconfirmedBalance) / (Decimal)Math.Pow(10, Decimals);
                 }
-                return String.Format("{0} {1}", totalBalance, CoinShortcut);
+                return String.Format("{0:0.######}", totalBalance);
             }
         }
     }

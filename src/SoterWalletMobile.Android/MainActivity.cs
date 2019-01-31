@@ -26,6 +26,7 @@ namespace SoterWalletMobile.Droid
                 .Enrich.WithProperty(Constants.SourceContextPropertyName, "Soter")
                 .CreateLogger();
             base.OnCreate(savedInstanceState);
+            ZXing.Net.Mobile.Forms.Android.Platform.Init();
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());
         }

@@ -23,19 +23,28 @@ namespace SoterWalletMobile.Pages
         {
             labelBalance.Text = selected.Balance;
             labelCurrency.Text = selected.Shortcut;
+            amountEntry.Text = string.Empty;
+            toAddressEntry.Text = string.Empty;
         }
 
-        void ScanButton_Tapped(object sender, System.EventArgs e)
+        async void ScanButton_Tapped(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            var scanner = new ZXing.Mobile.MobileBarcodeScanner();
+
+            var result = await scanner.Scan();
+
+            if (result != null)
+            {
+                toAddressEntry.Text = result.Text;
+            }
         }
 
-        void NextButton_Clicked(object sender, System.EventArgs e)
+        void NextButton_Clicked(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            DisplayAlert(AppResources.Error, "Not implemented yet!", "WELL DONE");
         }
 
-        void CoinList_ItemSelected(object sender, Xamarin.Forms.SelectedItemChangedEventArgs e)
+        void CoinList_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             SelectCoin((WalletViewModel)e.SelectedItem);
         }

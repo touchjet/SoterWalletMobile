@@ -1,5 +1,66 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="SoterWalletMobile.Pages.ReceivePage">
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:forms="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms" xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" ios:Page.UseSafeArea="true" xmlns:resx="clr-namespace:SoterWalletMobile;assembly=SoterWalletMobile" xmlns:controls="clr-namespace:SoterWalletMobile.Controls;assembly=SoterWalletMobile" Style="{StaticResource lightPageStyle}" x:Class="SoterWalletMobile.Pages.ReceivePage">
     <ContentPage.Content>
+        <Grid Padding="30,16,30,16" Style="{StaticResource gridStyle}">
+            <Grid.RowDefinitions>
+                <!-- Send -->
+                <RowDefinition Height="20" />
+                <RowDefinition Height="25" />
+                <!-- Coin Selection -->
+                <RowDefinition Height="60" />
+                <RowDefinition Height="45" />
+                <!-- QR CODE -->
+                <RowDefinition Height="200" />
+                <RowDefinition Height="30" />
+                <!-- Address -->
+                <RowDefinition Height="14" />
+                <RowDefinition Height="10" />
+                <RowDefinition Height="14" />
+                <RowDefinition Height="30" />
+                <!-- Address List -->
+                <RowDefinition Height="1" />
+                <RowDefinition Height="15" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="15" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Label Text="Send" Style="{StaticResource darkMediumLabelStyle}" Grid.Row="0" Grid.Column="0" />
+            <RelativeLayout HeightRequest="60" Grid.Row="2" Grid.Column="0">
+                <ListView x:Name="coinListView" ItemSelected="CoinList_ItemSelected" RowHeight="80" Rotation="270" SeparatorColor="Transparent" RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.5, Constant=-30}" RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=-0.5, Constant=30}" RelativeLayout.WidthConstraint="{ConstraintExpression Type=Constant, Constant=60}" RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Rotation="90" Padding="10,5,10,5" Orientation="Vertical" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                                    <Image Source="{Binding Icon}" HeightRequest="30" WidthRequest="30" VerticalOptions="Center" HorizontalOptions="Center" />
+                                    <Label Text="{Binding Shortcut}" Style="{StaticResource darkSmallLabelStyle}" VerticalOptions="End" HorizontalOptions="Center" />
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </RelativeLayout>
+            <StackLayout HeightRequest="200" WidthRequest="200" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="4" Grid.Column="0">
+                <forms:ZXingBarcodeImageView x:Name="ZXingBarcode" BarcodeFormat="QR_CODE" BarcodeValue="axQwBDtbfGK9HfqvLvorZP5q2WmuBg7JRBUjVLqc4VHdFMoJzNsACobEoxGevuxaztSNEZmrkmaSMbnZiyNq7nRj2gt5Y5mN9" WidthRequest="200" HeightRequest="200" Margin="10,0,10,10" />
+            </StackLayout>
+            <Label x:Name="addressLabel" Style="{StaticResource darkSmallLabelStyle}" HorizontalOptions="CenterAndExpand" Grid.Row="6" Grid.Column="0" />
+            <Label Text="Press and hold to copy" Style="{StaticResource graySmallLabelStyle}" HorizontalOptions="CenterAndExpand" Grid.Row="8" Grid.Column="0" />
+            <BoxView Color="{StaticResource grayColor}" HeightRequest="1" HorizontalOptions="FillAndExpand" Grid.Row="10" Grid.Column="0" />
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Fill" Grid.Row="12" Grid.Column="0">
+                <Label Text="ADDRESSES" Style="{StaticResource graySmallLabelStyle}" HorizontalOptions="StartAndExpand" />
+                <Button Text="NEW" Style="{StaticResource sideButtonStyle}" />
+            </StackLayout>
+            <ListView x:Name="addressListView" SelectionMode="None" ItemTapped="AddressList_ItemTapped" RowHeight="83" SeparatorColor="Transparent" Grid.Row="14" Grid.Column="0">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Label Text="{Binding AddressString}" Style="{StaticResource darkSmallLabelStyle}" HorizontalOptions="StartAndExpand" />
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

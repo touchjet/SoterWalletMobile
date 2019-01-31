@@ -20,6 +20,7 @@
     <PackageReference Include="Touchjet.BinaryUtils" Version="1.0.5" />
     <PackageReference Include="Touchjet.NetworkUtils" Version="1.0.2" />
     <PackageReference Include="NBitcoin" Version="4.1.1.80" />
+    <PackageReference Include="ZXing.Net.Mobile.Forms" Version="2.4.1" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Pages\" />

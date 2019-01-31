@@ -45,6 +45,15 @@
                 <Setter Property="BackgroundColor" Value="Transparent" />
                 <Setter Property="TextColor" Value="{StaticResource blueColor}" />
             </Style>
+            <Style x:Key="sideButtonStyle" TargetType="Button">
+                <Setter Property="HorizontalOptions" Value="End" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                <Setter Property="HeightRequest" Value="30"/>
+                <Setter Property="WidthRequest" Value="40"/>
+                <Setter Property="CornerRadius" Value="2"/>
+                <Setter Property="BackgroundColor" Value="{StaticResource blueColor}" />
+                <Setter Property="TextColor" Value="{StaticResource lightColor}" />
+            </Style>
             
             <Style x:Key="lightSmallLabelStyle" TargetType="Label">
                 <Setter Property="HorizontalOptions" Value="Center" />
