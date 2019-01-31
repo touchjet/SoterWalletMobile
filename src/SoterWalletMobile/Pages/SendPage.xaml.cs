@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 using SoterWalletMobile.Data;
 using SoterWalletMobile.ViewModels;
 using Xamarin.Forms;
@@ -15,6 +16,13 @@ namespace SoterWalletMobile.Pages
             InitializeComponent();
             walletViewModels = Repository.GetWalletViewModels();
             coinListView.ItemsSource = walletViewModels;
+            coinListView.SelectedItem = walletViewModels.FirstOrDefault();
+        }
+
+        void SelectCoin(WalletViewModel selected)
+        {
+            labelBalance.Text = selected.Balance;
+            labelCurrency.Text = selected.Shortcut;
         }
 
         void ScanButton_Tapped(object sender, System.EventArgs e)
@@ -29,7 +37,7 @@ namespace SoterWalletMobile.Pages
 
         void CoinList_ItemSelected(object sender, Xamarin.Forms.SelectedItemChangedEventArgs e)
         {
-            throw new NotImplementedException();
+            SelectCoin((WalletViewModel)e.SelectedItem);
         }
     }
 }
