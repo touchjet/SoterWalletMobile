@@ -4,13 +4,15 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using BlockchainService.Abstractions;
-using BlockchainService.BlockCypherProxy.Client;
+using BlockchainService.Abstractions.Models;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using Serilog;
 using SoterDevice;
 using SoterDevice.Models;
 using SoterWalletMobile.Helpers;
 using SoterWalletMobile.Models;
+using SoterWalletMobile.Services;
 using SoterWalletMobile.ViewModels;
 using Touchjet.BinaryUtils;
 using Xamarin.Forms;
@@ -153,23 +155,6 @@ namespace SoterWalletMobile.Data
             }
         }
 
-        readonly static IBitcoinServiceFactory bitcoinServiceFactory = new BitcoinServiceFactory("https://proxy1.digbig.io");
-        public static IBitcoinService GetBitcoinService(Coin coin)
-        {
-            switch (coin.CoinShortcut)
-            {
-                case "TEST":
-                    return bitcoinServiceFactory.GetService(CoinTypes.Bitcoin, true);
-                case "BTC":
-                    return bitcoinServiceFactory.GetService(CoinTypes.Bitcoin, false);
-                case "LTC":
-                    return bitcoinServiceFactory.GetService(CoinTypes.Litecoin, false);
-                case "DOGE":
-                    return bitcoinServiceFactory.GetService(CoinTypes.Dogecoin, false);
-            }
-            throw new System.Exception($"Coin {coin.CoinName} not supported!");
-        }
-
         public static async Task UpdateBalance()
         {
             IBitcoinService bitcoinService;
@@ -179,7 +164,7 @@ namespace SoterWalletMobile.Data
 
                 foreach (var address in db.Addresses.Include(a => a.Coin))
                 {
-                    bitcoinService = GetBitcoinService(address.Coin);
+                    bitcoinService = BitcoinService.GetBitcoinService(address.Coin.CoinShortcut);
                     var bal = await bitcoinService.GetBalanceAsync(address.AddressString);
                     address.ConfirmedBalance = bal.Balance;
                     address.UnconfirmedBalance = bal.UnconfirmedBalance;
@@ -233,7 +218,7 @@ namespace SoterWalletMobile.Data
             {
                 using (var db = new DatabaseContext())
                 {
-                    foreach (var address in db.Addresses.Where(a=>a.CoinId==coinId))
+                    foreach (var address in db.Addresses.Where(a => a.CoinId == coinId))
                     {
                         addresses.Add(new AddressViewModel() { Id = address.Id, CoinId = address.CoinId, AddressString = address.AddressString });
                     }
