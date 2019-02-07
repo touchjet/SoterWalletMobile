@@ -142,9 +142,9 @@ namespace SoterWalletMobile.Data
                     var address = new Address()
                     {
                         CoinId = coin.Id,
-                        Account = 0,
-                        Change = 0,
-                        AddressIndex = 0,
+                        Account = addressPath.Account,
+                        Change = addressPath.Change,
+                        AddressIndex = addressPath.AddressIndex,
                         AddressString = addressStr,
                         CoinType = addressPath.CoinType,
                         Purpose = addressPath.Purpose,
@@ -209,6 +209,14 @@ namespace SoterWalletMobile.Data
         static ImageSource GetIconImageSource(string coinShortcut)
         {
             return ImageSource.FromFile(coinShortcut.Equals("TEST") ? "BTC" : coinShortcut);
+        }
+
+        public static Address GetAddress(string addressString)
+        {
+            using (var db = new DatabaseContext())
+            {
+                return db.Addresses.FirstOrDefault(a => String.Equals(a.AddressString, addressString));
+            }
         }
 
         public static List<AddressViewModel> GetAddressViewModels(int coinId)

@@ -61,18 +61,22 @@
                 <Label x:Name="labelCurrency" Style="{StaticResource currencyLabelStyle}" Text="BTC" />
             </StackLayout>
             <Label Text="TO" Style="{StaticResource darkSmallLabelStyle}" HorizontalOptions="Start" Grid.Row="8" Grid.Column="0" />
-            <StackLayout Orientation="Horizontal" Grid.Row="10" Grid.Column="0">
-                <controls:BorderlessEntry x:Name="toAddressEntry" Placeholder="Address (Press and Hold to Paste)" HeightRequest="20" HorizontalOptions="StartAndExpand" />
-                <Image Source="Scan" HorizontalOptions="End">
+            <Grid Grid.Row="10" Grid.Column="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="20" />
+                </Grid.ColumnDefinitions>
+                <controls:BorderlessEntry x:Name="toAddressEntry" Placeholder="Address (Press and Hold to Paste)" TextChanged="Handle_TextChanged" HeightRequest="20" HorizontalOptions="StartAndExpand" Grid.Row="0" Grid.Column="0" />
+                <Image Source="Scan" HorizontalOptions="End" Grid.Column="1" Grid.Row="0">
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Tapped="ScanButton_Tapped" />
                     </Image.GestureRecognizers>
                 </Image>
-            </StackLayout>
+            </Grid>
             <BoxView Color="{StaticResource grayColor}" HeightRequest="1" HorizontalOptions="FillAndExpand" Grid.Row="12" Grid.Column="0" />
             <Label Text="AMOUNT" Style="{StaticResource darkSmallLabelStyle}" HorizontalOptions="Start" Grid.Row="14" Grid.Column="0" />
             <StackLayout Orientation="Horizontal" HeightRequest="30" Grid.Row="16" Grid.Column="0">
-                <controls:BorderlessEntry x:Name="amountEntry" Placeholder="Amount to Send" HeightRequest="20" HorizontalOptions="StartAndExpand" />
+                <controls:BorderlessEntry x:Name="amountEntry" Placeholder="Amount to Send" TextChanged="Handle_TextChanged" HeightRequest="20" HorizontalOptions="StartAndExpand" />
                 <Button x:Name="allButton" Text="ALL" Style="{StaticResource sideButtonStyle}" HorizontalOptions="End" />
             </StackLayout>
             <BoxView Color="{StaticResource grayColor}" HeightRequest="1" HorizontalOptions="FillAndExpand" Grid.Row="18" Grid.Column="0" />

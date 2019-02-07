@@ -16,8 +16,13 @@ namespace SoterWalletMobile.Models
         public uint Change { get; set; }
         public uint AddressIndex { get; set; }
         public string AddressString { get; set; }
-        public ulong ConfirmedBalance { get; set; }
-        public ulong UnconfirmedBalance { get; set; }
+        public long ConfirmedBalance { get; set; }
+        public long UnconfirmedBalance { get; set; }
+
+        public uint[] GetAddressPath()
+        {
+            return new uint[] { Purpose, CoinType, Account, Change, AddressIndex };
+        }
 
         public Coin Coin { get; set; }
         public List<Transaction> Transactions { get; set; }

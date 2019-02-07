@@ -27,7 +27,7 @@ namespace SoterWalletMobile.Pages
 
         async void DeviceNameLabel_Tapped(object sender, System.EventArgs e)
         {
-            await Navigation.PushModalAsync(new DeviceCommPage(CommStage.UpdateCoinTable));
+            await DeviceCommPage.UpdateCoinTable(this);
         }
 
         void Handle_ItemTapped(object sender, ItemTappedEventArgs e)

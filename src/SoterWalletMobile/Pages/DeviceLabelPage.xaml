@@ -17,7 +17,7 @@
             </Grid.ColumnDefinitions>
             <Label Text="Device Label" Style="{StaticResource darkMediumLabelStyle}" Grid.Row="0" Grid.Column="0"/>
             <Label Text="You can setup a label for this device, it may help you managing multiple Soter Wallet devices." HorizontalOptions="Start" Style="{StaticResource darkSmallLabelStyle}" Grid.Row="2" Grid.Column="0"/>
-            <controls:BorderlessEntry x:Name="deviceLabelEntry" Placeholder="Your Wallet Label" TextChanged="Handle_TextChanged" HeightRequest="20" Grid.Row="4" Grid.Column="0" />
+            <controls:BorderlessEntry x:Name="deviceLabelEntry" Keyboard="Email" Placeholder="Your Wallet Label" TextChanged="Handle_TextChanged" HeightRequest="20" Grid.Row="4" Grid.Column="0" />
             <BoxView Color="{StaticResource grayColor}" HeightRequest="1" HorizontalOptions="FillAndExpand" Grid.Row="5" Grid.Column="0" />
             <Button x:Name="okButton" Text="OK" Clicked="Handle_Clicked" Style="{StaticResource disabledButtonStyle}" Grid.Row="7" Grid.Column="0"/>
         </Grid>

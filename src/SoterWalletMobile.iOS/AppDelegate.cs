@@ -24,7 +24,7 @@ namespace SoterWalletMobile.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             Log.Logger = new LoggerConfiguration()
-                            .MinimumLevel.Verbose()
+                            .MinimumLevel.Debug()
                             .WriteTo.NSLog()
                             .CreateLogger();
             SQLitePCL.Batteries_V2.Init();

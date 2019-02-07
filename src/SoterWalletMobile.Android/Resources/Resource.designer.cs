@@ -27,7 +27,12 @@ namespace SoterWalletMobile.Droid
 		public static void UpdateIdValues()
 		{
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.actionBarSize = global::SoterWalletMobile.Droid.Resource.Attribute.actionBarSize;
+			global::ZXing.Net.Mobile.Forms.Android.Resource.Layout.zxingscanneractivitylayout = global::SoterWalletMobile.Droid.Resource.Layout.zxingscanneractivitylayout;
+			global::ZXing.Net.Mobile.Forms.Android.Resource.Layout.zxingscannerfragmentlayout = global::SoterWalletMobile.Droid.Resource.Layout.zxingscannerfragmentlayout;
 			global::ZXing.Net.Mobile.Forms.Android.Resource.String.library_name = global::SoterWalletMobile.Droid.Resource.String.library_name;
+			global::ZXing.Mobile.Resource.Id.contentFrame = global::SoterWalletMobile.Droid.Resource.Id.contentFrame;
+			global::ZXing.Mobile.Resource.Layout.zxingscanneractivitylayout = global::SoterWalletMobile.Droid.Resource.Layout.zxingscanneractivitylayout;
+			global::ZXing.Mobile.Resource.Layout.zxingscannerfragmentlayout = global::SoterWalletMobile.Droid.Resource.Layout.zxingscannerfragmentlayout;
 		}
 		
 		public partial class Animation
@@ -3904,6 +3909,9 @@ namespace SoterWalletMobile.Droid
 			// aapt resource value: 0x7f0a0082
 			public const int content = 2131361922;
 			
+			// aapt resource value: 0x7f0a00ed
+			public const int contentFrame = 2131362029;
+			
 			// aapt resource value: 0x7f0a0075
 			public const int contentPanel = 2131361909;
 			
@@ -4036,8 +4044,8 @@ namespace SoterWalletMobile.Droid
 			// aapt resource value: 0x7f0a0070
 			public const int list_item = 2131361904;
 			
-			// aapt resource value: 0x7f0a00ee
-			public const int masked = 2131362030;
+			// aapt resource value: 0x7f0a00ef
+			public const int masked = 2131362031;
 			
 			// aapt resource value: 0x7f0a00de
 			public const int media_actions = 2131362014;
@@ -4468,8 +4476,8 @@ namespace SoterWalletMobile.Droid
 			// aapt resource value: 0x7f0a001b
 			public const int view_offset_helper = 2131361819;
 			
-			// aapt resource value: 0x7f0a00ed
-			public const int visible = 2131362029;
+			// aapt resource value: 0x7f0a00ee
+			public const int visible = 2131362030;
 			
 			// aapt resource value: 0x7f0a00cb
 			public const int volume_item_container = 2131361995;
@@ -4830,6 +4838,12 @@ namespace SoterWalletMobile.Droid
 			
 			// aapt resource value: 0x7f04004e
 			public const int Toolbar = 2130968654;
+			
+			// aapt resource value: 0x7f04004f
+			public const int zxingscanneractivitylayout = 2130968655;
+			
+			// aapt resource value: 0x7f040050
+			public const int zxingscannerfragmentlayout = 2130968656;
 			
 			static Layout()
 			{

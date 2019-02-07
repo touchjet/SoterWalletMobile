@@ -18,7 +18,7 @@
                 <ColumnDefinition Width="270" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <Label x:Name="deviceLabel"  Style="{StaticResource darkMediumLabelStyle}" Grid.Row="1" Grid.Column="1" />
+            <Label x:Name="deviceName"  Style="{StaticResource darkMediumLabelStyle}" Grid.Row="1" Grid.Column="1" />
             <Image Source="SoterWire" Aspect="AspectFill" Grid.Row="3" Grid.Column="1" />
             <Label x:Name="messageLabel" Text="{x:Static resx:AppResources.InitializeDeviceMessage}" Style="{StaticResource blueSmallLabelStyle}" Grid.Row="5" Grid.Column="1" />
             <ActivityIndicator x:Name="activityIndicator" Color="{StaticResource darkColor}" IsRunning="true" Grid.Row="7" Grid.Column="1"/>

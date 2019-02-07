@@ -29,6 +29,7 @@
     <Folder Include="Data\" />
     <Folder Include="Controls\" />
     <Folder Include="ViewModels\" />
+    <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\device-driver\xamarin-bluetooth-le\Source\Plugin.BLE.Abstractions\Plugin.BLE.Abstractions.csproj" />
